@@ -6,3 +6,6 @@ data/uploads
 .vercel
 *.log
 tsconfig.tsbuildinfo
+
+.vercel
+.env*
