@@ -1,0 +1,422 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "id": "grp_demo_leling",
+      "code": "LELING26",
+      "name": "示例・樂齡團",
+      "type": "association",
+      "stayStart": "2026-03-11",
+      "stayEnd": "2026-03-13",
+      "guestCount": 28,
+      "sample": true,
+      "createdAt": "2026-03-11T00:00:00.000Z"
+    }
+  ],
+  "trees": [
+    {
+      "id": "tree_demo_1",
+      "code": "YJ-2027-0001",
+      "pinHash": "b12a369de7d024babe0ca541c3ed5f02:54dafca89709580c354d8eb0fcf063ec21e1845d783751432728df5aaadeda8f",
+      "pinEnc": "3X5rJ-GrPe5rbHMb.C3EVaDN5Rr--rux1wljIPw.ZjKu-BSP",
+      "tokenHash": "59814dc89410d926f508010fab20b04c:ebe2735ceda187f4a8ada0ffed33788edd19c7b40539efc7153da3a2fc8254ac",
+      "tokenEnc": "jlouCqpOvXtLq4JB.ik0wgM4bdNCWNuXzjgE2lg.JASoLJldEII9ER1Z17pB",
+      "groupId": "grp_demo_leling",
+      "species": "青剛櫟",
+      "location": "園區綠地 A 區",
+      "plantedOn": "2026-03-12",
+      "status": "growing",
+      "isPublic": true,
+      "heightCm": 55,
+      "statusReason": "",
+      "nextCheckMonth": "",
+      "replantedOn": "",
+      "replantedName": "",
+      "replantedByGuest": false,
+      "sample": true,
+      "failedAttempts": 0,
+      "lockedUntil": null
+    },
+    {
+      "id": "tree_demo_2",
+      "code": "YJ-2027-0002",
+      "pinHash": "c79175e765db03a787be53419b18d053:70b39470b0e0e9398d4590cc34d0b714d8488485a38bd3c887085207a9b93b0c",
+      "pinEnc": "vwx7_68yfct72bGN.TNJLaDzOyezg37cIUvw9Zw.D1HWM1al",
+      "tokenHash": "7d42b8eebe33364cd251a595f176c123:c6b06ae0db541f68297748c8169ab4906f8f6ae45f98a37d439a06ecd3b5a951",
+      "tokenEnc": "Bn_05UN0Y6PJ76_G.DbCre6oZlBe9JgERIJYRrA.WeKUfLhhmf-9IoZ2LhyW",
+      "groupId": "grp_demo_leling",
+      "species": "台灣肖楠",
+      "location": "園區綠地 B 區",
+      "plantedOn": "2026-03-12",
+      "status": "watching",
+      "isPublic": true,
+      "heightCm": 42,
+      "statusReason": "落葉偏多，連日大雨後根系還沒站穩",
+      "nextCheckMonth": "2026-12",
+      "replantedOn": "",
+      "replantedName": "",
+      "replantedByGuest": false,
+      "sample": true,
+      "failedAttempts": 0,
+      "lockedUntil": null
+    },
+    {
+      "id": "tree_demo_3",
+      "code": "YJ-2027-0003",
+      "pinHash": "b6793ec89befd9975c9b35a8d9464ea1:4773d2edb60d109367907a0ed694b414f3a743e0d49e1843a8c68cc730f53803",
+      "pinEnc": "EuruPzXAUh4PCk5N.dBEKd_oWDvUT5aGE_60v0w.6lsEUhz9",
+      "tokenHash": "6ae39d5035a345484b4f0ec890183d42:cd1ce02623fbcdc27bd07873c92d04978c12afccb08a602be32b7576e3c87f36",
+      "tokenEnc": "h4JmE8T7KmvAigBn.bDm-z3TkYNvf_Wn-vauJfw.KgHDKF29filuOuM3c7hY",
+      "groupId": "grp_demo_leling",
+      "species": "烏心石",
+      "location": "園區綠地 A 區",
+      "plantedOn": "2026-03-12",
+      "status": "replanted",
+      "isPublic": true,
+      "heightCm": 36,
+      "statusReason": "原本的樟樹沒有發新芽",
+      "nextCheckMonth": "",
+      "replantedOn": "2026-09-05",
+      "replantedName": "王大明",
+      "replantedByGuest": true,
+      "sample": true,
+      "failedAttempts": 0,
+      "lockedUntil": null
+    },
+    {
+      "id": "tree_demo_4",
+      "code": "YJ-2027-0004",
+      "pinHash": "8be5a6481863d40b4c3d5ccd77b38534:b73637fbee23a7eb76f90037848a2ab022abb12b378631c33e5375634b21e51c",
+      "pinEnc": "aSXvxZX4DLRePX3Z.WL93pxtUGLbrT0aCfFdgYQ.KWwiu_J6",
+      "tokenHash": "d81804f6b8014766bd49c5ee8d7411d7:158da76d4a54de26051f992243f474fe552508097650ae70097d71c4f1da615a",
+      "tokenEnc": "nd54gIIf36EahfKq.77c8i0ajznh3vJz-U8_uKQ.2AC7DqEwP4P6oWJfb_g1",
+      "groupId": "grp_demo_leling",
+      "species": "台灣欒樹",
+      "location": "苗圃培育區",
+      "plantedOn": "2026-06-20",
+      "status": "replant_needed",
+      "isPublic": false,
+      "heightCm": 48,
+      "statusReason": "颱風折斷主幹，苗圃確認沒有存活",
+      "nextCheckMonth": "",
+      "replantedOn": "",
+      "replantedName": "",
+      "replantedByGuest": false,
+      "sample": true,
+      "failedAttempts": 0,
+      "lockedUntil": null
+    }
+  ],
+  "planters": [
+    {
+      "id": "pl_demo_1",
+      "treeId": "tree_demo_1",
+      "displayName": "林秀琴",
+      "contact": "lin.demo@example.com",
+      "notifyConsent": true,
+      "locale": "zh-TW"
+    },
+    {
+      "id": "pl_demo_2",
+      "treeId": "tree_demo_2",
+      "displayName": "陳建國",
+      "contact": "",
+      "notifyConsent": false,
+      "locale": "zh-TW"
+    },
+    {
+      "id": "pl_demo_3a",
+      "treeId": "tree_demo_3",
+      "displayName": "王大明",
+      "contact": "wang.demo@example.com",
+      "notifyConsent": true,
+      "locale": "zh-TW"
+    },
+    {
+      "id": "pl_demo_3b",
+      "treeId": "tree_demo_3",
+      "displayName": "王小妹",
+      "contact": "",
+      "notifyConsent": false,
+      "locale": "zh-TW"
+    },
+    {
+      "id": "pl_demo_4",
+      "treeId": "tree_demo_4",
+      "displayName": "周阿姨",
+      "contact": "zhou.demo@example.com",
+      "notifyConsent": true,
+      "locale": "zh-TW"
+    }
+  ],
+  "updates": [
+    {
+      "id": "upd_c7a4c8573e22",
+      "treeId": "tree_demo_1",
+      "season": "planted",
+      "takenOn": "2026-03-12",
+      "photos": [
+        {
+          "url": "/assets/photos/courtyard-pine@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 40,
+      "status": "growing",
+      "species": "青剛櫟",
+      "note": "種下那天，土還有點鬆。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-03-12T08:00:00.000Z"
+    },
+    {
+      "id": "upd_ed87252ae5dc",
+      "treeId": "tree_demo_1",
+      "season": "2026-Q2",
+      "takenOn": "2026-06-18",
+      "photos": [
+        {
+          "url": "/assets/photos/courtyard-pine@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 48,
+      "status": "growing",
+      "species": "青剛櫟",
+      "note": "新葉展開了。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-06-18T08:00:00.000Z"
+    },
+    {
+      "id": "upd_00851f62bc58",
+      "treeId": "tree_demo_1",
+      "season": "2026-Q3",
+      "takenOn": "2026-09-16",
+      "photos": [
+        {
+          "url": "/assets/photos/courtyard-pine@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 55,
+      "status": "growing",
+      "species": "青剛櫟",
+      "note": "這一季生長穩定。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-09-16T08:00:00.000Z"
+    },
+    {
+      "id": "upd_7f88bf84d78c",
+      "treeId": "tree_demo_2",
+      "season": "planted",
+      "takenOn": "2026-03-12",
+      "photos": [
+        {
+          "url": "/assets/photos/famous-pine-1@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 35,
+      "status": "growing",
+      "species": "台灣肖楠",
+      "note": "種下那天。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-03-12T08:00:00.000Z"
+    },
+    {
+      "id": "upd_117336f00bb8",
+      "treeId": "tree_demo_2",
+      "season": "2026-Q3",
+      "takenOn": "2026-09-16",
+      "photos": [
+        {
+          "url": "/assets/photos/famous-pine-1@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 42,
+      "status": "watching",
+      "species": "台灣肖楠",
+      "note": "落葉偏多，連日大雨後根系還沒站穩。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-09-16T08:00:00.000Z"
+    },
+    {
+      "id": "upd_b856bc80e9b8",
+      "treeId": "tree_demo_3",
+      "season": "planted",
+      "takenOn": "2026-03-12",
+      "photos": [
+        {
+          "url": "/assets/photos/nursery-old-tree@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 38,
+      "status": "growing",
+      "species": "樟樹",
+      "note": "種下那天的樟樹。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-03-12T08:00:00.000Z"
+    },
+    {
+      "id": "upd_7a0797bb103a",
+      "treeId": "tree_demo_3",
+      "season": "2026-Q2",
+      "takenOn": "2026-06-20",
+      "photos": [
+        {
+          "url": "/assets/photos/nursery-old-tree@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 38,
+      "status": "replant_needed",
+      "species": "樟樹",
+      "note": "沒有發新芽，苗圃確認沒有存活。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-06-20T08:00:00.000Z"
+    },
+    {
+      "id": "upd_32feb0fdda8f",
+      "treeId": "tree_demo_3",
+      "season": "2026-Q3",
+      "takenOn": "2026-09-05",
+      "photos": [
+        {
+          "url": "/assets/photos/nursery-old-tree@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 36,
+      "status": "replanted",
+      "species": "烏心石",
+      "note": "王大明回到永靖，再種下一棵烏心石。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-09-05T08:00:00.000Z"
+    },
+    {
+      "id": "upd_0161474f4f5f",
+      "treeId": "tree_demo_4",
+      "season": "planted",
+      "takenOn": "2026-06-20",
+      "photos": [
+        {
+          "url": "/assets/photos/famous-tree-umbrella@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 30,
+      "status": "growing",
+      "species": "台灣欒樹",
+      "note": "種下那天。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-06-20T08:00:00.000Z"
+    },
+    {
+      "id": "upd_2475ae998b5f",
+      "treeId": "tree_demo_4",
+      "season": "2026-Q3",
+      "takenOn": "2026-09-16",
+      "photos": [
+        {
+          "url": "/assets/photos/famous-tree-umbrella@800.jpg",
+          "kind": "full"
+        }
+      ],
+      "heightCm": 48,
+      "status": "replant_needed",
+      "species": "台灣欒樹",
+      "note": "颱風折斷主幹，苗圃確認沒有存活。",
+      "uploader": "示例",
+      "sample": true,
+      "createdAt": "2026-09-16T08:00:00.000Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg_demo_1",
+      "treeId": "tree_demo_1",
+      "content": "希望你在永靖慢慢長，我下次再來看你。",
+      "isPublic": true,
+      "authorName": "林秀琴",
+      "createdAt": "2026-03-12T10:00:00.000Z"
+    },
+    {
+      "id": "msg_demo_2",
+      "treeId": "tree_demo_2",
+      "content": "這棵樹給退休後的自己。",
+      "isPublic": false,
+      "authorName": "陳建國",
+      "createdAt": "2026-03-12T10:00:00.000Z"
+    },
+    {
+      "id": "msg_demo_3",
+      "treeId": "tree_demo_3",
+      "content": "孫子說，這是我們家的樹。",
+      "isPublic": true,
+      "authorName": "王大明",
+      "createdAt": "2026-09-05T10:00:00.000Z"
+    },
+    {
+      "id": "msg_5e95c5ef7611",
+      "treeId": "tree_demo_1",
+      "content": "下次回來要看你長高。",
+      "isPublic": true,
+      "authorName": "林秀琴",
+      "createdAt": "2026-11-19T07:33:56.194Z"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "cert_demo",
+      "groupId": "grp_demo_leling",
+      "number": "YJ-C-2026-001",
+      "localSpend": 100000,
+      "nurseryVisitors": 28,
+      "treesPlanted": 4,
+      "sample": true
+    }
+  ],
+  "notifications": [
+    {
+      "id": "nt_demo_1",
+      "planterId": "pl_demo_2",
+      "treeId": "tree_demo_2",
+      "type": "watching",
+      "channel": "app",
+      "sentAt": "2026-09-16T09:00:00.000Z",
+      "result": "skipped",
+      "detail": "沒有聯絡方式",
+      "body": "這一季，你的樹有些落葉，苗圃夥伴已經在照顧它。我們會在2026年12月再看一次，到時候告訴你結果。"
+    }
+  ],
+  "staff": [
+    {
+      "id": "staff_demo",
+      "name": "吟遊員工",
+      "email": "staff.demo@example.com",
+      "passwordHash": "dbb572f4cb96f9d63d3f792b7b1614c4:b2d7c7dbf555339fef246937a88e5179c3a24228188b8f7e541f9d70eda79624",
+      "role": "staff",
+      "failedAttempts": 0,
+      "lockedUntil": null
+    },
+    {
+      "id": "nursery_demo",
+      "name": "苗圃夥伴",
+      "email": "nursery.demo@example.com",
+      "passwordHash": "c119b720de95777ac5c93c9dfc1d51a6:f95f3df110e61214649c4c51c1a56e5104c9dc0c52b6c2b39c42c10270df6b7d",
+      "role": "nursery",
+      "failedAttempts": 0,
+      "lockedUntil": null
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+/* The One · 永靖吟遊 — One Tree 品牌色與字體 */
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap');
+:root {
+  --color-yinyou-green: #0E845A;      /* 吟遊綠：logo底色、主按鈕、頁首（白字對比 4.7:1） */
+  --color-yinyou-green-dark: #0B6E4B; /* 深吟遊綠：連結、小字標題 */
+  --color-cream: #EAE4CC;             /* 米白：logo文字、裝飾底色 */
+  --color-paper: #FAF8F1;             /* 宣紙白：頁面背景 */
+  --color-terracotta: #8A4B35;        /* 陶土：重點標示（待設計確認正式色號） */
+  --color-ink: #1A1F1C;               /* 墨色：內文 */
+  --font-heading: 'LXGW WenKai TC', 'BiauKai', 'DFKai-SB', serif;
+  --font-body: Arial, 'Noto Sans TC', sans-serif;
+  --text-body: 18px;
+  --button-min-height: 52px;
+  --radius-photo: 12px;
+}

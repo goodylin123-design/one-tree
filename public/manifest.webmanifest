@@ -1,0 +1,17 @@
+{
+  "name": "The One · 永靖吟遊",
+  "short_name": "永靖吟遊",
+  "start_url": "/zh-TW",
+  "display": "standalone",
+  "background_color": "#FAF8F1",
+  "theme_color": "#0E845A",
+  "lang": "zh-Hant",
+  "icons": [
+    {
+      "src": "/assets/logo/logo-green-lowres.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

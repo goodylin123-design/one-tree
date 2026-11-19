@@ -1,0 +1,67 @@
+{
+  "brand": {
+    "name": "The One · 永靖吟遊",
+    "tagline": "我在永靖，種下一棵美好。",
+    "subline": "一棵樹，一份美好，一生相伴。",
+    "en": "One Person. One Tree. One Story.",
+    "onePerson": { "title": "一個獨特的自己", "body": "每位旅人都有屬於自己的生命故事。" },
+    "oneTree": { "title": "一棵專屬的樹", "body": "在永靖種下真實的生命，建立長期連結。" },
+    "oneStory": { "title": "一段持續的故事", "body": "旅人離開後，樹仍持續成長，故事也繼續發生。" }
+  },
+  "home": {
+    "inputHint": "請輸入證明上的樹木編號與驗證碼",
+    "codeLabel": "樹木編號",
+    "pinLabel": "驗證碼",
+    "submit": "看我的樹",
+    "errorNotFound": "找不到這個編號，請再核對證明上的編號與驗證碼",
+    "errorLocked": "輸入錯誤次數太多，請 10 分鐘後再試"
+  },
+  "tree": {
+    "titleOf": "{name}的樹",
+    "code": "編號",
+    "species": "樹種",
+    "plantedOn": "種下日期",
+    "location": "種植地點",
+    "status": "目前樹況",
+    "updateNote": "每季更新一次照片。下一次更新：{month}",
+    "statusGrowing": "生長良好",
+    "statusWatching": "觀察中",
+    "statusReplantNeeded": "需要補種",
+    "statusReplanted": "已補種"
+  },
+  "timeline": { "title": "成長紀錄", "plantedDay": "種下那天", "quarter": "{year}年第{q}季" },
+  "message": {
+    "title": "寫給樹的話",
+    "hint": "寫一句話給這棵樹，或給以後回來看它的自己",
+    "public": "讓同團的朋友也看得到",
+    "save": "留下這句話"
+  },
+  "certificate": {
+    "title": "在地創價證明",
+    "intro": "這份證明記下你這次住宿為永靖做的事，只記錄已經發生的事實。",
+    "number": "證明編號",
+    "stay": "住宿日期",
+    "guests": "人數",
+    "localSpend": "這次住宿付給在地的金額",
+    "nurseryVisitors": "參加苗圃行程人次",
+    "treesPlanted": "種下的樹"
+  },
+  "return": {
+    "title": "回到永靖",
+    "book": "預約回訪",
+    "replant": "回娘家補種",
+    "contact": "聯絡我們"
+  },
+  "group": { "title": "{groupName}在永靖種下的 {count} 棵樹" },
+  "notify": {
+    "watching": "這一季，你的樹有些落葉，苗圃夥伴已經在照顧它。我們會在{nextMonth}再看一次，到時候告訴你結果。",
+    "replantNeeded": "很抱歉要告訴你，你在{plantedOn}種下的{species}，這一季沒有撐過來。苗圃夥伴判斷原因是{reason}。我們把最後的照片留在你的成長紀錄裡。歡迎你回到永靖，用回娘家價格再種一棵樹，讓這個故事繼續。",
+    "replanted": "{name}在{replantedOn}回到永靖，再種下一棵{species}。這是這棵樹故事的第二章。"
+  },
+  "footer": {
+    "brand": "The One · 永靖吟遊　One Person. One Tree. One Story.",
+    "address": "彰化縣永靖鄉中山路一段972巷56號",
+    "phone": "02 2562 1777",
+    "email": "inyou.yongjing@theonestyle.com"
+  }
+}
