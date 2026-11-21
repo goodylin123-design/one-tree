@@ -3,7 +3,8 @@ import { safeEqual, signBody } from './crypto'
 
 export const TREE_COOKIE = 'onetree_tree'
 export const ADMIN_COOKIE = 'onetree_admin'
-const MAX_AGE = 60 * 60 * 24 * 120
+const TREE_MAX_AGE = 60 * 60 * 24 * 180
+const MAX_AGE = TREE_MAX_AGE
 
 export function cookieBase() {
   return {
@@ -36,19 +37,32 @@ export function unseal(raw: string | undefined): Record<string, unknown> | null 
   }
 }
 
-export function sealTree(code: string) {
-  return seal({ kind: 'tree', code, exp: Date.now() + MAX_AGE * 1000 })
+export function sealTree(code: string, adoptionId = '') {
+  return seal({ kind: 'tree', code, adoptionId, exp: Date.now() + TREE_MAX_AGE * 1000 })
 }
 
 export function sealAdmin(id: string) {
   return seal({ kind: 'admin', id, exp: Date.now() + 60 * 60 * 12 * 1000 })
 }
 
-export async function readTreeCode() {
+async function readTreePayload() {
   const jar = await cookies()
   const data = unseal(jar.get(TREE_COOKIE)?.value)
   if (!data || data.kind !== 'tree' || typeof data.code !== 'string') return null
-  return data.code
+  return {
+    code: data.code,
+    adoptionId: typeof data.adoptionId === 'string' ? data.adoptionId : '',
+  }
+}
+
+export async function readTreeCode() {
+  const data = await readTreePayload()
+  return data ? data.code : null
+}
+
+export async function readAdoptionId() {
+  const data = await readTreePayload()
+  return data && typeof data.adoptionId === 'string' ? data.adoptionId : ''
 }
 
 export async function readAdminId() {
@@ -58,9 +72,9 @@ export async function readAdminId() {
   return data.id
 }
 
-export async function setTreeSession(code: string) {
+export async function setTreeSession(code: string, adoptionId = '') {
   const jar = await cookies()
-  jar.set(TREE_COOKIE, sealTree(code), cookieBase())
+  jar.set(TREE_COOKIE, sealTree(code, adoptionId), cookieBase())
 }
 
 export async function clearTreeSession() {

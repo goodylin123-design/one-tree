@@ -39,6 +39,36 @@ export type Tree = {
   sample: boolean
   failedAttempts: number
   lockedUntil: string | null
+  zone: string
+  speciesZh: string
+  speciesLatin: string
+  lat: number | null
+  lng: number | null
+  tagCode: string
+  adoptable: boolean
+  speciesId: string
+  cardPhotoUrl: string
+}
+
+export type Species = {
+  id: string
+  speciesZh: string
+  speciesLatin: string
+  co2KgPerYearAvg: number | null
+  co2Basis: string
+  updatedAt: string
+}
+
+export type CardStatus = 'active' | 'revoked'
+
+export type Adoption = {
+  id: string
+  treeId: string
+  adopterName: string
+  adoptedAt: string
+  cardKeyHash: string
+  cardStatus: CardStatus
+  locale: string
 }
 
 export type Planter = {
@@ -72,6 +102,7 @@ export type TreeMessage = {
   isPublic: boolean
   authorName: string
   createdAt: string
+  adoptionId?: string
 }
 
 export type Certificate = {
@@ -116,4 +147,6 @@ export type Database = {
   certificates: Certificate[]
   notifications: Notification[]
   staff: Staff[]
+  adoptions: Adoption[]
+  species: Species[]
 }

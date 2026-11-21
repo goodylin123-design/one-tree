@@ -3,9 +3,14 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { CertificateSheet } from '@/components/certificate-sheet'
 import { GuestFrame } from '@/components/guest-frame'
 import { Link } from '@/i18n/navigation'
+import { brandColor } from '@/lib/brand'
 import { decryptSecret } from '@/lib/crypto'
-import { treeEntryUrl } from '@/lib/format'
+import { siteOrigin, treeEntryUrl } from '@/lib/format'
+import { adoptionForTree } from '@/lib/adoptions'
+import { readDb } from '@/lib/db'
 import { requireTree } from '@/lib/guard'
+import { findSpecies } from '@/lib/species'
+import { readAdoptionId } from '@/lib/session'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -25,7 +30,7 @@ export default async function CertificatePage({ params }: { params: Promise<{ lo
     qrDataUrl = await QRCode.toDataURL(treeEntryUrl(bundle.tree.code, token), {
       width: 280,
       margin: 1,
-      color: { dark: '#0B6E4B', light: '#FFFFFF' },
+      color: { dark: brandColor('yinyou-green-dark'), light: '#FFFFFF' },
     })
   } catch {
     qrDataUrl = null
@@ -37,7 +42,19 @@ export default async function CertificatePage({ params }: { params: Promise<{ lo
         <Link href={`/t/${bundle.tree.code}`} className="text-yinyou-dark underline no-print">
           {nav('backToTree')}
         </Link>
-        <CertificateSheet group={bundle.group} certificate={bundle.certificate} qrDataUrl={qrDataUrl} />
+        <CertificateSheet
+          group={bundle.group}
+          certificate={bundle.certificate}
+          qrDataUrl={qrDataUrl}
+          pageUrl={`${siteOrigin()}/${locale}/t/${bundle.tree.code}/certificate`}
+          carbon={{
+            species: findSpecies(readDb().species, bundle.tree),
+            status: bundle.tree.status,
+            adoptedAt: adoptionForTree(bundle.tree.id, await readAdoptionId())?.adoptedAt || bundle.tree.plantedOn,
+            replantedOn: bundle.tree.replantedOn,
+            locale,
+          }}
+        />
       </div>
     </GuestFrame>
   )

@@ -1,0 +1,329 @@
+{
+  "brand": {
+    "name": "The One · 永靖吟游",
+    "tagline": "我在永靖，种下一棵美好。",
+    "taglineLead": "我在永靖，",
+    "taglineRest": "种下一棵美好。",
+    "subline": "一棵树，一份美好，一生相伴。",
+    "en": "One Person. One Tree. One Story.",
+    "storyLine": "一个人，一棵树，一段独一无二的生命故事。",
+    "onePerson": {
+      "title": "一个独特的自己",
+      "body": "每位旅人都有属于自己的生命故事。"
+    },
+    "oneTree": {
+      "title": "一棵专属的树",
+      "body": "认养园里已经种下的树，建立长期连结。"
+    },
+    "oneStory": {
+      "title": "一段持续的故事",
+      "body": "旅人离开后，树仍持续成长，故事也继续发生。"
+    }
+  },
+  "common": {
+    "pleaseWait": "请稍候…",
+    "skip": "跳到主要内容",
+    "sampleTree": "这是开幕前的示例树。照片是园区示例图，正式认养之后会换成这棵树自己的照片。",
+    "sampleGroup": "这是开幕前的示例团体，用来确认画面。",
+    "notYet": "尚未登录",
+    "languages": "语言",
+    "join": "、"
+  },
+  "home": {
+    "inputHint": "请输入证明上的树木编号与验证码",
+    "codeLabel": "树木编号",
+    "pinLabel": "验证码",
+    "codePlaceholder": "例如 YJ-2027-0001",
+    "pinPlaceholder": "6 位数字",
+    "submit": "看我的树",
+    "errorNotFound": "找不到这个编号，请再核对证明上的编号与验证码",
+    "errorLocked": "输入错误次数太多，请 10 分钟后再试",
+    "heroAlt": "永靖吟游 villa 之间的庭园步道",
+    "about": "关于 One Tree",
+    "demoTitle": "开发试用",
+    "demoHint": "输入数字即可，不用验证码。正式住客不会看到这一段。"
+  },
+  "tree": {
+    "titleOf": "{name}的树",
+    "code": "编号",
+    "species": "树种",
+    "plantedOn": "认养日期",
+    "location": "种植地点",
+    "status": "目前树况",
+    "planters": "认养人",
+    "height": "这一季的高度",
+    "heightCm": "{cm} 公分",
+    "updateNote": "每季更新一次照片。",
+    "updateWhen": "下一次更新：{month}",
+    "nextCheck": "下一次检查：{month}",
+    "replantCta": "回到永靖补种",
+    "statusGrowing": "生长良好",
+    "statusWatching": "观察中",
+    "statusReplantNeeded": "需要补种",
+    "statusReplanted": "已补种",
+    "photoFull": "全株",
+    "photoDetail": "枝叶近看",
+    "unnamed": "认养人",
+    "another": "查看另一棵树",
+    "groupLink": "同团的树",
+    "pageTitle": "我的树"
+  },
+  "nav": {
+    "timeline": "成长纪录",
+    "message": "写给树的话",
+    "certificate": "在地创价证明",
+    "return": "回到永靖",
+    "share": "分享这棵树",
+    "backToTree": "回到我的树"
+  },
+  "timeline": {
+    "title": "成长纪录",
+    "plantedDay": "认养那天",
+    "quarter": "{year}年第{q}季",
+    "empty": "认养之后，这里会留下每一季的照片。",
+    "sample": "示例照片，不是这棵树的实拍",
+    "height": "高度 {cm} 公分",
+    "emptyAlt": "中庭的松树"
+  },
+  "message": {
+    "title": "写给树的话",
+    "hint": "写一句话给这棵树，或给以后回来看它的自己",
+    "limit": "一句话，80 字以内。",
+    "public": "让同团的朋友也看得到",
+    "save": "留下这句话",
+    "saved": "这句话已经留下来了。",
+    "empty": "还没有留下话。认养的那天，或现在，都可以写。",
+    "placeholder": "写在这里",
+    "author": "你的名字",
+    "authorHint": "可不填",
+    "defaultAuthor": "认养人",
+    "errorLength": "请写一句话，80 字以内。",
+    "publicBadge": "同团看得到",
+    "privateBadge": "只有自己看得到",
+    "paintingAlt": "住客的植物写生"
+  },
+  "certificate": {
+    "title": "在地创价证明",
+    "intro": "这份证明记下你这次住宿为永靖做的事，只记录已经发生的事实。",
+    "number": "证明编号",
+    "stay": "住宿日期",
+    "guests": "人数",
+    "localSpend": "这次住宿付给在地的金额",
+    "nurseryVisitors": "参加苗圃行程人次",
+    "treesPlanted": "认养的树",
+    "print": "下载／列印证明",
+    "money": "新台币 {amount} 元",
+    "stayRange": "{start}至{end}",
+    "people": "{count} 人",
+    "trees": "{count} 棵",
+    "visits": "{count} 人次",
+    "sample": "示例证明，数字只为预览版面。",
+    "qrAlt": "回到这棵树的 QR code"
+  },
+  "return": {
+    "title": "回到永靖",
+    "book": "预约回访",
+    "replant": "回娘家补种",
+    "contact": "联络我们",
+    "bookBody": "想再来看看这棵树，可以直接打电话或写信。",
+    "bookLink": "前往订房页",
+    "lineLink": "开启 LINE 官方账号",
+    "bookPending": "订房页与 LINE 官方账号确认后会放在这里。现在请用电话或 Email。",
+    "phone": "打电话",
+    "email": "写信",
+    "replantBody": "如果树没有存活，欢迎回到永靖再种一棵。回娘家价格与条件尚在确认，请先跟我们联络。",
+    "replantProxy": "暂时无法亲自回来时，是否由苗圃代为补种，以及费用，也还在确认。",
+    "cabinAlt": "园区木屋",
+    "addressLabel": "地址"
+  },
+  "group": {
+    "title": "{groupName}在永靖认养的 {count} 棵树",
+    "hidden": "这位旅人还没有公开姓名与写给树的话。",
+    "publicMessage": "写给树的话",
+    "empty": "这一团还没有认养树。",
+    "how": "想看某一棵树的完整纪录，请用证明上的编号与验证码。",
+    "forHr": "给同行与人资的总览"
+  },
+  "about": {
+    "title": "关于 One Tree",
+    "signAlt": "永靖吟游园区招牌",
+    "positionTitle": "在永靖过的日子",
+    "position": [
+      "全台首创「生活型文化旅店」。",
+      "「生活型」指住客在这里过的是永靖的日子：白天出门走走，晚上回来相聚，三餐在灶脚旁吃。",
+      "日游、夜吟：白天是「游」，到苗圃看树怎么养大，在名木下写生；晚上是「吟」，回到大厅唱歌、听讲，分享白天画的作品。",
+      "吟，是盈，更充实的人生；游，是友，陪伴、共享的人生。"
+    ],
+    "courtyardTitle": "一埕、一院、一方灶脚",
+    "courtyard": [
+      "一座合院，可以有多少种生活的方式？",
+      "在传统合院里，埕是相聚的地方；院落则让永靖的光、家人的身影自由穿梭；灶脚，蕴藏着人和土地那一代又一代的伙食日常。",
+      "空间从来不只是屋舍排列，这之间收藏着人们过日子的韵味与智慧。",
+      "The One 走入永靖各式大大小小的合院，重新思考埕、院落与灶脚与当代的关系。让传统文化得以发挥新的姿态，放大情感的美，不断发生在此刻与未来。",
+      "一埕、一院、一方灶脚。当代的优雅合院，长出了属于自己的全新生活想象。"
+    ],
+    "cheng": "埕",
+    "yuan": "院",
+    "zaojiao": "灶脚",
+    "hall": "天窗大厅",
+    "dining": "餐厅",
+    "plaque": "堂号",
+    "famous": "名木",
+    "pine": "名木黑松",
+    "nursery": "在地苗圃",
+    "updateTitle": "树的照片怎么更新",
+    "updateBody": "每季更新一次照片与树况，不做即时监测。认养当天会先留下「认养那天」的照片。树况不好，或树没有存活，都照实告诉你，照片与原因都留着。",
+    "season": "季别",
+    "shoot": "拍摄时间",
+    "online": "上线时间",
+    "schedule": [
+      {
+        "season": "第一季",
+        "shoot": "3 月第 2 周",
+        "online": "3 月底前"
+      },
+      {
+        "season": "第二季",
+        "shoot": "6 月第 2 周",
+        "online": "6 月底前"
+      },
+      {
+        "season": "第三季",
+        "shoot": "9 月第 2 周",
+        "online": "9 月底前"
+      },
+      {
+        "season": "第四季",
+        "shoot": "12 月第 2 周",
+        "online": "12 月底前"
+      }
+    ],
+    "factsTitle": "园区",
+    "facts": [
+      {
+        "label": "客房",
+        "value": "20 栋独栋 villa，全区可住 40 人"
+      },
+      {
+        "label": "植物",
+        "value": "2,000 坪绿地，台湾原生植物 80 种、共 1 万 5,000 株"
+      },
+      {
+        "label": "在地雇用",
+        "value": "在彰化当地雇用至少 30 位员工"
+      },
+      {
+        "label": "交通",
+        "value": "彰化高铁站接驳约 15 分钟"
+      },
+      {
+        "label": "开幕",
+        "value": "2027 年 1 月 1 日"
+      }
+    ],
+    "diagram": "示意图",
+    "diagramNote": "这张是园区鸟瞰设计示意图，不是实景。"
+  },
+  "share": {
+    "title": "分享这棵树",
+    "hint": "把这张图传给家人，一起来看这棵树。",
+    "save": "储存分享图",
+    "making": "正在制作图片…",
+    "saved": "图片已储存，可以传给家人。",
+    "shared": "已打开分享。",
+    "fail": "图片没有做成，请再试一次。",
+    "alt": "我在永靖认养的树"
+  },
+  "enter": {
+    "opening": "正在打开你的树…",
+    "button": "看我的树"
+  },
+  "notify": {
+    "watching": "这一季，你的树有些落叶，苗圃伙伴已经在照顾它。我们会在{nextMonth}再看一次，到时候告诉你结果。",
+    "replantNeeded": "很抱歉要告诉你，你在{plantedOn}认养的{species}，这一季没有撑过来。苗圃伙伴判断原因是{reason}。我们把最后的照片留在你的成长纪录里。欢迎你回到永靖，用回娘家价格再种一棵树，让这个故事继续。",
+    "replanted": "{name}在{replantedOn}回到永靖，再种下一棵{species}。这是这棵树故事的第二章。",
+    "replantedByNursery": "苗圃伙伴在{replantedOn}代为补种一棵{species}。这是这棵树故事的第二章。",
+    "reasonFallback": "苗圃现场确认"
+  },
+  "footer": {
+    "brand": "The One · 永靖吟游　One Person. One Tree. One Story.",
+    "address": "彰化县永靖乡中山路一段972巷56号",
+    "phone": "02 2562 1777",
+    "email": "inyou.yongjing@theonestyle.com"
+  },
+  "notFound": {
+    "title": "找不到这一页",
+    "body": "请回到首页，用证明上的编号再找一次。",
+    "home": "回到首页"
+  },
+  "lexicon": {
+    "青剛櫟": "青冈栎",
+    "烏心石": "乌心石",
+    "台灣肖楠": "台湾肖楠",
+    "樟樹": "樟树",
+    "台灣欒樹": "台湾栾树",
+    "黃連木": "黄连木",
+    "苦楝": "苦楝",
+    "楓香": "枫香",
+    "園區綠地 A 區": "园区绿地 A 区",
+    "園區綠地 B 區": "园区绿地 B 区",
+    "園區綠地 C 區": "园区绿地 C 区",
+    "苗圃培育區": "苗圃培育区",
+    "示例住客": "示例住客",
+    "示例住客A": "示例住客A",
+    "示例住客B": "示例住客B",
+    "示例・樂齡團": "示例・乐龄团",
+    "落葉偏多，連日大雨後根系還沒站穩": "落叶偏多，连日大雨后根系还没站稳",
+    "落葉偏多，連日大雨後根系還沒站穩。": "落叶偏多，连日大雨后根系还没站稳。",
+    "原本的樟樹沒有發新芽": "原本的樟树没有发新芽",
+    "沒有發新芽，苗圃確認沒有存活。": "没有发新芽，苗圃确认没有存活。",
+    "颱風折斷主幹，苗圃確認沒有存活": "台风折断主干，苗圃确认没有存活",
+    "颱風折斷主幹，苗圃確認沒有存活。": "台风折断主干，苗圃确认没有存活。",
+    "新葉展開了。": "新叶展开了。",
+    "這一季生長穩定。": "这一季生长稳定。",
+    "示例住客A回到永靖，再種下一棵烏心石。": "示例住客A回到永靖，再种下一棵乌心石。",
+    "希望你在永靖慢慢長，我下次再來看你。": "希望你在永靖慢慢长，我下次再来看你。",
+    "這棵樹給退休後的自己。": "这棵树给退休后的自己。",
+    "孫子說，這是我們家的樹。": "孙子说，这是我们家的树。",
+    "認養那天，土還有點鬆。": "认养那天，土还有点松。",
+    "認養那天。": "认养那天。",
+    "認養那天的樟樹。": "认养那天的樟树。"
+  },
+  "adopt": {
+    "nearbyTitle": "我在园区",
+    "nearbyHint": "允许定位之后，这里列出离你最近的三棵树。定位只在这支手机上比对，不会被储存。",
+    "nearbyButton": "找出附近的树",
+    "nearbyNeed": "需要允许定位，才能列出附近的树。",
+    "nearbyEmpty": "附近还没有已定位的树。",
+    "nearbyMeters": "约 {meters} 公尺",
+    "mapTitle": "在园区的位置",
+    "mapHint": "这是示意位置，方便你在园里对照。",
+    "cardRevokedTitle": "这张卡已停用",
+    "cardRevoked": "这张卡已停用，请与永靖吟游联络。",
+    "cardMissingTitle": "找不到这张卡",
+    "cardMissing": "这个链接没有对应的树卡。请与永靖吟游联络。",
+    "tagAdopted": "这棵树已经有人认养。",
+    "tagOpen": "这棵树还可以认养。",
+    "tagSpecies": "树种介绍"
+  },
+  "species": {
+    "ringOak": "壳斗科常绿乔木，叶背带白，果实是橡实。园里的青刚栎已经种下。",
+    "michelia": "木兰科常绿乔木，花白而香，心材颜色深。",
+    "incense": "台湾特有的柏科乔木，木材带清香。",
+    "camphor": "台湾常见的樟科乔木，叶子揉碎有樟脑香。",
+    "goldenrain": "台湾特有的无患子科乔木，秋天蒴果转红。",
+    "pistache": "漆树科落叶乔木，秋天叶子转红。",
+    "chinaberry": "楝科落叶乔木，春天开淡紫色花。",
+    "sweetgum": "金缕梅科落叶乔木，秋天叶子转红。",
+    "unknown": "这是园里的台湾原生树。"
+  },
+  "carbon": {
+    "yearlyLead": "这棵树每年约吸存 ",
+    "yearlyTail": " 公斤二氧化碳（以树种平均值估算）。",
+    "source": "出处：{basis}",
+    "more": "完整说明",
+    "explain": "这个数字是该树种的平均值，不是这棵树实测的结果。数值由专人确认后填入。1 公斤碳约等于 3.67 公斤二氧化碳。这里说的是这棵树的估算固碳量。",
+    "sinceLead": "自{start}起，约 {years} 年，累计约 ",
+    "sinceTail": " 公斤二氧化碳。树没有存活时停止累计；补种的新树重新起算。"
+  }
+}

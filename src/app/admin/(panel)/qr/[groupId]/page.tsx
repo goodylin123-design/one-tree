@@ -1,6 +1,7 @@
 import QRCode from 'qrcode'
 import { notFound } from 'next/navigation'
 import { PrintButton } from '@/components/print-button'
+import { brandColor } from '@/lib/brand'
 import { decryptSecret } from '@/lib/crypto'
 import { readDb } from '@/lib/db'
 import { siteOrigin, treeEntryUrl } from '@/lib/format'
@@ -36,7 +37,7 @@ export default async function QrPage({
         ? await QRCode.toDataURL(treeEntryUrl(tree.code, token), {
             width: 320,
             margin: 1,
-            color: { dark: '#0B6E4B', light: '#FFFFFF' },
+            color: { dark: brandColor('yinyou-green-dark'), light: '#FFFFFF' },
           })
         : ''
       const names = db.planters

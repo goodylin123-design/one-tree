@@ -20,12 +20,18 @@ function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: numbe
   ctx.closePath()
 }
 
+function canvasFamily() {
+  return document.documentElement.lang === 'zh-Hant'
+    ? '"LXGW WenKai TC", serif'
+    : '"Noto Sans SC", "Noto Sans JP", "Noto Sans KR", "Noto Sans TC", sans-serif'
+}
+
 function fitText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number) {
   let size = 54
-  ctx.font = `700 ${size}px "LXGW WenKai TC", serif`
+  ctx.font = `700 ${size}px ${canvasFamily()}`
   while (size > 28 && ctx.measureText(text).width > maxWidth) {
     size -= 2
-    ctx.font = `700 ${size}px "LXGW WenKai TC", serif`
+    ctx.font = `700 ${size}px ${canvasFamily()}`
   }
 }
 
@@ -34,12 +40,16 @@ export function SharePanel({
   speciesLine,
   brand,
   photo,
+  taglineLead,
+  taglineRest,
   labels,
 }: {
   nameLine: string
   speciesLine: string
   brand: string
   photo: string
+  taglineLead: string
+  taglineRest: string
   labels: Labels
 }) {
   const [message, setMessage] = useState('')
@@ -47,21 +57,28 @@ export function SharePanel({
   async function save() {
     setMessage(labels.making)
     try {
-      await document.fonts.load('700 64px "LXGW WenKai TC"')
-      await document.fonts.load('400 32px "Noto Sans TC"')
+      const family = canvasFamily()
+      await document.fonts.load(`700 64px ${family}`)
+      await document.fonts.load(`400 32px ${family}`)
       const canvas = document.createElement('canvas')
       canvas.width = 1080
       canvas.height = 1350
       const ctx = canvas.getContext('2d')
       if (!ctx) throw new Error('canvas')
-      ctx.fillStyle = '#FAF8F1'
+      const colors = getComputedStyle(document.documentElement)
+      const green = colors.getPropertyValue('--color-yinyou-green').trim()
+      const greenDark = colors.getPropertyValue('--color-yinyou-green-dark').trim()
+      const paper = colors.getPropertyValue('--color-paper').trim()
+      const cream = colors.getPropertyValue('--color-cream').trim()
+      const ink = colors.getPropertyValue('--color-ink').trim()
+      ctx.fillStyle = paper
       ctx.fillRect(0, 0, 1080, 1350)
-      ctx.fillStyle = '#0E845A'
+      ctx.fillStyle = green
       ctx.fillRect(0, 0, 1080, 280)
-      ctx.fillStyle = '#EAE4CC'
-      ctx.font = '700 64px "LXGW WenKai TC", serif'
-      ctx.fillText('我在永靖，', 72, 120)
-      ctx.fillText('種下一棵美好。', 72, 210)
+      ctx.fillStyle = cream
+      ctx.font = `700 64px ${family}`
+      ctx.fillText(taglineLead, 72, 120)
+      ctx.fillText(taglineRest, 72, 210)
 
       const dx = 72
       const dy = 340
@@ -70,7 +87,7 @@ export function SharePanel({
       ctx.save()
       roundRect(ctx, dx, dy, dw, dh, 24)
       ctx.clip()
-      ctx.fillStyle = '#EAE4CC'
+      ctx.fillStyle = cream
       ctx.fillRect(dx, dy, dw, dh)
       if (photo) {
         const img = new Image()
@@ -83,14 +100,14 @@ export function SharePanel({
       }
       ctx.restore()
 
-      ctx.fillStyle = '#0B6E4B'
+      ctx.fillStyle = greenDark
       fitText(ctx, nameLine, 936)
       ctx.fillText(nameLine, 72, 1105)
-      ctx.fillStyle = '#1A1F1C'
-      ctx.font = '400 32px "Noto Sans TC", sans-serif'
+      ctx.fillStyle = ink
+      ctx.font = `400 32px ${family}`
       ctx.fillText(speciesLine, 72, 1175)
-      ctx.fillStyle = '#0B6E4B'
-      ctx.font = '400 28px "Noto Sans TC", sans-serif'
+      ctx.fillStyle = greenDark
+      ctx.font = `400 28px ${family}`
       ctx.fillText(brand, 72, 1260)
 
       const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'))
@@ -98,7 +115,7 @@ export function SharePanel({
       const file = new File([blob], 'yongjing-tree.png', { type: 'image/png' })
       if (navigator.canShare?.({ files: [file] })) {
         try {
-          await navigator.share({ files: [file], title: '我在永靖，種下一棵美好。', text: nameLine })
+          await navigator.share({ files: [file], title: `${taglineLead}${taglineRest}`, text: nameLine })
           setMessage(labels.shared)
           return
         } catch (error) {

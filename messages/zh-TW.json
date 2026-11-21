@@ -2,19 +2,32 @@
   "brand": {
     "name": "The One · 永靖吟遊",
     "tagline": "我在永靖，種下一棵美好。",
+    "taglineLead": "我在永靖，",
+    "taglineRest": "種下一棵美好。",
     "subline": "一棵樹，一份美好，一生相伴。",
     "en": "One Person. One Tree. One Story.",
     "storyLine": "一個人，一棵樹，一段獨一無二的生命故事。",
-    "onePerson": { "title": "一個獨特的自己", "body": "每位旅人都有屬於自己的生命故事。" },
-    "oneTree": { "title": "一棵專屬的樹", "body": "在永靖種下真實的生命，建立長期連結。" },
-    "oneStory": { "title": "一段持續的故事", "body": "旅人離開後，樹仍持續成長，故事也繼續發生。" }
+    "onePerson": {
+      "title": "一個獨特的自己",
+      "body": "每位旅人都有屬於自己的生命故事。"
+    },
+    "oneTree": {
+      "title": "一棵專屬的樹",
+      "body": "認養園裡已經種下的樹，建立長期連結。"
+    },
+    "oneStory": {
+      "title": "一段持續的故事",
+      "body": "旅人離開後，樹仍持續成長，故事也繼續發生。"
+    }
   },
   "common": {
     "pleaseWait": "請稍候…",
     "skip": "跳到主要內容",
-    "sampleTree": "這是開幕前的示例樹。照片是園區示例圖，正式種下之後會換成這棵樹自己的照片。",
+    "sampleTree": "這是開幕前的示例樹。照片是園區示例圖，正式認養之後會換成這棵樹自己的照片。",
     "sampleGroup": "這是開幕前的示例團體，用來確認畫面。",
-    "notYet": "尚未登錄"
+    "notYet": "尚未登錄",
+    "languages": "語言",
+    "join": "、"
   },
   "home": {
     "inputHint": "請輸入證明上的樹木編號與驗證碼",
@@ -28,25 +41,29 @@
     "heroAlt": "永靖吟遊 villa 之間的庭園步道",
     "about": "關於 One Tree",
     "demoTitle": "開發試用",
-    "demoHint": "開幕前用來確認畫面，正式住客不會看到這一段。"
+    "demoHint": "輸入數字即可，不用驗證碼。正式住客不會看到這一段。"
   },
   "tree": {
     "titleOf": "{name}的樹",
     "code": "編號",
     "species": "樹種",
-    "plantedOn": "種下日期",
+    "plantedOn": "認養日期",
     "location": "種植地點",
     "status": "目前樹況",
-    "planters": "種樹人",
+    "planters": "認養人",
     "height": "這一季的高度",
     "heightCm": "{cm} 公分",
-    "updateNote": "每季更新一次照片。下一次更新：{month}",
+    "updateNote": "每季更新一次照片。",
+    "updateWhen": "下一次更新：{month}",
+    "nextCheck": "下一次檢查：{month}",
+    "replantCta": "回到永靖補種",
     "statusGrowing": "生長良好",
     "statusWatching": "觀察中",
     "statusReplantNeeded": "需要補種",
     "statusReplanted": "已補種",
     "photoFull": "全株",
     "photoDetail": "枝葉近看",
+    "unnamed": "認養人",
     "another": "查看另一棵樹",
     "groupLink": "同團的樹",
     "pageTitle": "我的樹"
@@ -61,9 +78,9 @@
   },
   "timeline": {
     "title": "成長紀錄",
-    "plantedDay": "種下那天",
+    "plantedDay": "認養那天",
     "quarter": "{year}年第{q}季",
-    "empty": "種下之後，這裡會留下每一季的照片。",
+    "empty": "認養之後，這裡會留下每一季的照片。",
     "sample": "示例照片，不是這棵樹的實拍",
     "height": "高度 {cm} 公分",
     "emptyAlt": "中庭的松樹"
@@ -75,10 +92,11 @@
     "public": "讓同團的朋友也看得到",
     "save": "留下這句話",
     "saved": "這句話已經留下來了。",
-    "empty": "還沒有留下話。種下的那天，或現在，都可以寫。",
+    "empty": "還沒有留下話。認養的那天，或現在，都可以寫。",
     "placeholder": "寫在這裡",
     "author": "你的名字",
     "authorHint": "可不填",
+    "defaultAuthor": "認養人",
     "errorLength": "請寫一句話，80 字以內。",
     "publicBadge": "同團看得到",
     "privateBadge": "只有自己看得到",
@@ -92,8 +110,10 @@
     "guests": "人數",
     "localSpend": "這次住宿付給在地的金額",
     "nurseryVisitors": "參加苗圃行程人次",
-    "treesPlanted": "種下的樹",
-    "print": "下載或列印",
+    "treesPlanted": "認養的樹",
+    "print": "下載／列印證明",
+    "money": "新臺幣 {amount} 元",
+    "stayRange": "{start}至{end}",
     "people": "{count} 人",
     "trees": "{count} 棵",
     "visits": "{count} 人次",
@@ -117,10 +137,10 @@
     "addressLabel": "地址"
   },
   "group": {
-    "title": "{groupName}在永靖種下的 {count} 棵樹",
+    "title": "{groupName}在永靖認養的 {count} 棵樹",
     "hidden": "這位旅人還沒有公開姓名與寫給樹的話。",
     "publicMessage": "寫給樹的話",
-    "empty": "這一團還沒有種下樹。",
+    "empty": "這一團還沒有認養樹。",
     "how": "想看某一棵樹的完整紀錄，請用證明上的編號與驗證碼。",
     "forHr": "給同行與人資的總覽"
   },
@@ -152,23 +172,54 @@
     "pine": "名木黑松",
     "nursery": "在地苗圃",
     "updateTitle": "樹的照片怎麼更新",
-    "updateBody": "每季更新一次照片與樹況，不做即時監測。種下當天會先留下「種下那天」的照片。樹況不好，或樹沒有存活，都照實告訴你，照片與原因都留著。",
+    "updateBody": "每季更新一次照片與樹況，不做即時監測。認養當天會先留下「認養那天」的照片。樹況不好，或樹沒有存活，都照實告訴你，照片與原因都留著。",
     "season": "季別",
     "shoot": "拍攝時間",
     "online": "上線時間",
     "schedule": [
-      { "season": "第一季", "shoot": "3 月第 2 週", "online": "3 月底前" },
-      { "season": "第二季", "shoot": "6 月第 2 週", "online": "6 月底前" },
-      { "season": "第三季", "shoot": "9 月第 2 週", "online": "9 月底前" },
-      { "season": "第四季", "shoot": "12 月第 2 週", "online": "12 月底前" }
+      {
+        "season": "第一季",
+        "shoot": "3 月第 2 週",
+        "online": "3 月底前"
+      },
+      {
+        "season": "第二季",
+        "shoot": "6 月第 2 週",
+        "online": "6 月底前"
+      },
+      {
+        "season": "第三季",
+        "shoot": "9 月第 2 週",
+        "online": "9 月底前"
+      },
+      {
+        "season": "第四季",
+        "shoot": "12 月第 2 週",
+        "online": "12 月底前"
+      }
     ],
     "factsTitle": "園區",
     "facts": [
-      { "label": "客房", "value": "20 棟獨棟 villa，全區可住 40 人" },
-      { "label": "植物", "value": "2,000 坪綠地，台灣原生植物 80 種、共 1 萬 5,000 株" },
-      { "label": "在地僱用", "value": "在彰化當地僱用至少 30 位員工" },
-      { "label": "交通", "value": "彰化高鐵站接駁約 15 分鐘" },
-      { "label": "開幕", "value": "2027 年 1 月 1 日" }
+      {
+        "label": "客房",
+        "value": "20 棟獨棟 villa，全區可住 40 人"
+      },
+      {
+        "label": "植物",
+        "value": "2,000 坪綠地，台灣原生植物 80 種、共 1 萬 5,000 株"
+      },
+      {
+        "label": "在地僱用",
+        "value": "在彰化當地僱用至少 30 位員工"
+      },
+      {
+        "label": "交通",
+        "value": "彰化高鐵站接駁約 15 分鐘"
+      },
+      {
+        "label": "開幕",
+        "value": "2027 年 1 月 1 日"
+      }
     ],
     "diagram": "示意圖",
     "diagramNote": "這張是園區鳥瞰設計示意圖，不是實景。"
@@ -181,7 +232,7 @@
     "saved": "圖片已儲存，可以傳給家人。",
     "shared": "已打開分享。",
     "fail": "圖片沒有做成，請再試一次。",
-    "alt": "我在永靖種下的樹"
+    "alt": "我在永靖認養的樹"
   },
   "enter": {
     "opening": "正在打開你的樹…",
@@ -189,9 +240,10 @@
   },
   "notify": {
     "watching": "這一季，你的樹有些落葉，苗圃夥伴已經在照顧它。我們會在{nextMonth}再看一次，到時候告訴你結果。",
-    "replantNeeded": "很抱歉要告訴你，你在{plantedOn}種下的{species}，這一季沒有撐過來。苗圃夥伴判斷原因是{reason}。我們把最後的照片留在你的成長紀錄裡。歡迎你回到永靖，用回娘家價格再種一棵樹，讓這個故事繼續。",
+    "replantNeeded": "很抱歉要告訴你，你在{plantedOn}認養的{species}，這一季沒有撐過來。苗圃夥伴判斷原因是{reason}。我們把最後的照片留在你的成長紀錄裡。歡迎你回到永靖，用回娘家價格再種一棵樹，讓這個故事繼續。",
     "replanted": "{name}在{replantedOn}回到永靖，再種下一棵{species}。這是這棵樹故事的第二章。",
-    "replantedByNursery": "苗圃夥伴在{replantedOn}代為補種一棵{species}。這是這棵樹故事的第二章。"
+    "replantedByNursery": "苗圃夥伴在{replantedOn}代為補種一棵{species}。這是這棵樹故事的第二章。",
+    "reasonFallback": "苗圃現場確認"
   },
   "footer": {
     "brand": "The One · 永靖吟遊　One Person. One Tree. One Story.",
@@ -235,17 +287,17 @@
     "create": "建立",
     "spend": "付給在地的金額（新臺幣）",
     "visitors": "苗圃行程人次",
-    "treeCountField": "種下棵數",
+    "treeCountField": "認養棵數",
     "certTitle": "在地創價資料",
     "batchTitle": "批次建立樹",
     "batchHint": "協會或企業通常一次 20 至 40 棵。家庭可以少於 20 棵，最多 40 棵。",
     "count": "棵數",
     "species": "樹種",
     "location": "種植地點",
-    "plantedOn": "種下日期",
+    "plantedOn": "認養日期",
     "catalogHint": "樹種與種植地點清單尚未定案，可先選建議，或直接打字。",
     "planterLines": "種樹人",
-    "planterLinesHint": "一行一棵，順序對應新建立的樹。可寫成：林秀琴, email@example.com。少於棵數時，其餘先記為種樹人。",
+    "planterLinesHint": "一行一棵，順序對應新建立的樹。可寫成：示例住客, guest@example.com。少於棵數時，其餘先記為認養人。",
     "consent": "已取得對方同意，樹況通知可以寄到留下的 Email",
     "publicTree": "同團頁顯示姓名",
     "createTrees": "建立這些樹",
@@ -261,7 +313,7 @@
     "photoDetail": "枝葉近看",
     "photoHint": "直式、看得到編號名牌。上傳後會自動壓縮，長邊不超過 1600 像素。",
     "season": "紀錄",
-    "plantedDay": "種下那天",
+    "plantedDay": "認養那天",
     "takenOn": "拍攝日期",
     "height": "高度（公分）",
     "note": "一句說明",
@@ -304,6 +356,74 @@
     "typeReplanted": "已補種",
     "demoHint": "開發用帳號只在這台電腦的開發模式顯示。",
     "facts": "基本資料",
-    "none": "沒有符合的樹。"
+    "none": "沒有符合的樹。",
+    "adoptionTitle": "認養登記",
+    "adopterName": "認養人",
+    "adoptedAt": "認養日期",
+    "cardLocale": "樹卡語言",
+    "createAdoption": "登記並產生樹卡",
+    "keyOnce": "這組樹卡金鑰只顯示這一次。請立刻下載印製檔。資料庫只留雜湊，舊卡不能事後重印。",
+    "downloadCard": "開啟印製檔",
+    "revokeCard": "停用這張卡",
+    "reissueCard": "停用並重發",
+    "cardActive": "使用中",
+    "cardRevoked": "已停用",
+    "placeTitle": "樹的位置",
+    "zone": "園區",
+    "tagCode": "樹牌編號",
+    "lat": "緯度",
+    "lng": "經度",
+    "latin": "學名",
+    "adoptable": "還可以認養",
+    "savePlace": "儲存位置",
+    "photoBatch": "批次上傳季度照片",
+    "photoBatchHint": "檔名請用樹木編號，例如 YJ-2027-0001-full.jpg 與 YJ-2027-0001-detail.jpg。同一季、同一棵樹會更新照片，樹況維持不變。",
+    "photoBatchUpload": "上傳這些照片",
+    "cards": "樹卡",
+    "speciesTitle": "樹種固碳估算",
+    "co2": "每年平均固碳量（公斤二氧化碳）",
+    "co2Hint": "留空表示尚未確認。請由專人填入樹種平均值與出處，App 不會自己推算。",
+    "basis": "出處",
+    "saveSpecies": "儲存這個樹種",
+    "cardPhoto": "樹卡照片",
+    "cardPhotoHint": "印在樹卡上的樹種照片。同一樹種裡還沒有照片的樹，會沿用這張。",
+    "saveCardPhoto": "儲存樹卡照片"
+  },
+  "adopt": {
+    "nearbyTitle": "我在園區",
+    "nearbyHint": "允許定位之後，這裡列出離你最近的三棵樹。定位只在這支手機上比對，不會被儲存。",
+    "nearbyButton": "找出附近的樹",
+    "nearbyNeed": "需要允許定位，才能列出附近的樹。",
+    "nearbyEmpty": "附近還沒有已定位的樹。",
+    "nearbyMeters": "約 {meters} 公尺",
+    "mapTitle": "在園區的位置",
+    "mapHint": "這是示意位置，方便你在園裡對照。",
+    "cardRevokedTitle": "這張卡已停用",
+    "cardRevoked": "這張卡已停用，請與永靖吟遊聯絡。",
+    "cardMissingTitle": "找不到這張卡",
+    "cardMissing": "這個連結沒有對應的樹卡。請與永靖吟遊聯絡。",
+    "tagAdopted": "這棵樹已經有人認養。",
+    "tagOpen": "這棵樹還可以認養。",
+    "tagSpecies": "樹種介紹"
+  },
+  "species": {
+    "ringOak": "殼斗科常綠喬木，葉背帶白，果實是橡實。園裡的青剛櫟已經種下。",
+    "michelia": "木蘭科常綠喬木，花白而香，心材顏色深。",
+    "incense": "台灣特有的柏科喬木，木材帶清香。",
+    "camphor": "台灣常見的樟科喬木，葉子揉碎有樟腦香。",
+    "goldenrain": "台灣特有的無患子科喬木，秋天蒴果轉紅。",
+    "pistache": "漆樹科落葉喬木，秋天葉子轉紅。",
+    "chinaberry": "楝科落葉喬木，春天開淡紫色花。",
+    "sweetgum": "金縷梅科落葉喬木，秋天葉子轉紅。",
+    "unknown": "這是園裡的台灣原生樹。"
+  },
+  "carbon": {
+    "yearlyLead": "這棵樹每年約吸存 ",
+    "yearlyTail": " 公斤二氧化碳（以樹種平均值估算）。",
+    "source": "出處：{basis}",
+    "more": "完整說明",
+    "explain": "這個數字是該樹種的平均值，不是這棵樹實測的結果。數值由專人確認後填入。1 公斤碳約等於 3.67 公斤二氧化碳。這裡說的是這棵樹的估算固碳量。",
+    "sinceLead": "自{start}起，約 {years} 年，累計約 ",
+    "sinceTail": " 公斤二氧化碳。樹沒有存活時停止累計；補種的新樹重新起算。"
   }
 }

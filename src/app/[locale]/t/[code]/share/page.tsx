@@ -2,8 +2,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { GuestFrame } from '@/components/guest-frame'
 import { SharePanel } from '@/components/share-panel'
 import { Link } from '@/i18n/navigation'
-import { formatDate, planterNames } from '@/lib/format'
+import { formatDate } from '@/lib/format'
 import { requireTree } from '@/lib/guard'
+import { asLocale, localizedNames, phrase } from '@/lib/messages'
 import { latestUpdate } from '@/lib/queries'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -21,7 +22,16 @@ export default async function SharePage({ params }: { params: Promise<{ locale: 
   const treeText = await getTranslations('tree')
   const brand = await getTranslations('brand')
   const nav = await getTranslations('nav')
-  const names = planterNames(bundle.planters.map((planter) => planter.displayName))
+  const common = await getTranslations('common')
+  const localeKey = asLocale(locale)
+  const names = localizedNames(
+    bundle.planters.map((planter) => planter.displayName),
+    locale,
+    common('join'),
+    treeText('unnamed'),
+  )
+  const species = phrase(locale, bundle.tree.species)
+  const planted = formatDate(bundle.tree.plantedOn, localeKey)
   const photo = latestUpdate(bundle.updates)?.photos[0]?.url || ''
   const nameLine = treeText('titleOf', { name: names })
 
@@ -41,16 +51,18 @@ export default async function SharePage({ params }: { params: Promise<{ locale: 
           <div className="space-y-1 px-5 py-4">
             <p className="kai text-2xl text-yinyou-dark">{nameLine}</p>
             <p>
-              {bundle.tree.species}　{formatDate(bundle.tree.plantedOn)}
+              {species}　<span className="nowrap">{planted}</span>
             </p>
             <p className="text-[16px] text-yinyou-dark">{brand('name')}</p>
           </div>
         </article>
         <SharePanel
           nameLine={nameLine}
-          speciesLine={`${bundle.tree.species}　${formatDate(bundle.tree.plantedOn)}`}
+          speciesLine={`${species}　${planted}`}
           brand={brand('name')}
           photo={photo}
+          taglineLead={brand('taglineLead')}
+          taglineRest={brand('taglineRest')}
           labels={{
             save: t('save'),
             making: t('making'),

@@ -1,6 +1,7 @@
-import messages from '../../messages/zh-TW.json'
-import type { NoticeType } from './types'
+import type { AppLocale } from '@/i18n/routing'
 import { fill, formatDate, formatMonth } from './format'
+import { messagesFor, phrase } from './messages'
+import type { NoticeType } from './types'
 
 export function noticeBody(
   type: NoticeType,
@@ -13,21 +14,26 @@ export function noticeBody(
     replantedOn?: string
     replantedByGuest: boolean
   },
+  locale: AppLocale = 'zh-TW',
 ) {
+  const messages = messagesFor(locale)
+  const species = phrase(locale, input.species)
+  const reason = input.reason ? phrase(locale, input.reason) : messages.notify.reasonFallback
+  const name = phrase(locale, input.name) || messages.tree.unnamed
   if (type === 'watching') {
-    return fill(messages.notify.watching, { nextMonth: formatMonth(input.nextCheckMonth || '') })
+    return fill(messages.notify.watching, { nextMonth: formatMonth(input.nextCheckMonth || '', locale) })
   }
   if (type === 'replant_needed') {
     return fill(messages.notify.replantNeeded, {
-      plantedOn: formatDate(input.plantedOn),
-      species: input.species,
-      reason: input.reason || '苗圃現場確認',
+      plantedOn: formatDate(input.plantedOn, locale),
+      species,
+      reason,
     })
   }
   const template = input.replantedByGuest ? messages.notify.replanted : messages.notify.replantedByNursery
   return fill(template, {
-    name: input.name || '種樹人',
-    replantedOn: formatDate(input.replantedOn || ''),
-    species: input.species,
+    name,
+    replantedOn: formatDate(input.replantedOn || '', locale),
+    species,
   })
 }

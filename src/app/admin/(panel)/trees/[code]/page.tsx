@@ -1,8 +1,10 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { savePlanters, saveUpdate } from '@/actions/admin'
+import { createAdoption, reissueAdoption, revokeAdoption, saveCardPhoto, savePlace, savePlanters, saveUpdate } from '@/actions/admin'
 import { StatusFields } from '@/components/status-fields'
 import { SubmitButton } from '@/components/submit-button'
 import { readDb } from '@/lib/db'
+import { routing } from '@/i18n/routing'
 import { currentSeason, todayISO } from '@/lib/format'
 import { requireUser } from '@/lib/guard'
 import { adminProblem, tx } from '@/lib/text'
@@ -23,7 +25,7 @@ export default async function TreeAdminPage({
   searchParams,
 }: {
   params: Promise<{ code: string }>
-  searchParams: Promise<{ error?: string; ok?: string; notices?: string }>
+  searchParams: Promise<{ error?: string; ok?: string; notices?: string; key?: string; adoption?: string }>
 }) {
   const staff = await requireUser()
   const { code } = await params
@@ -33,6 +35,7 @@ export default async function TreeAdminPage({
   if (!tree) notFound()
   const planters = db.planters.filter((item) => item.treeId === tree.id)
   const updates = db.updates.filter((item) => item.treeId === tree.id).sort((a, b) => b.takenOn.localeCompare(a.takenOn))
+  const adoptions = db.adoptions.filter((item) => item.treeId === tree.id)
   const problem = adminProblem(query.error)
   const year = new Date().getFullYear()
   const statusLabels: Record<TreeStatus, string> = {
@@ -58,6 +61,115 @@ export default async function TreeAdminPage({
         <p role="alert" className="text-terra">
           {problem}
         </p>
+      ) : null}
+      {query.key ? (
+        <section className="card space-y-3">
+          <p>{tx('admin.keyOnce')}</p>
+          <p className="break-all font-bold">{query.key}</p>
+          <Link href={`/admin/cards/${query.adoption || ''}?key=${encodeURIComponent(query.key)}`} className="btn-primary">
+            {tx('admin.downloadCard')}
+          </Link>
+        </section>
+      ) : null}
+      {staff.role === 'staff' ? (
+        <section className="card space-y-4">
+          <h2 className="text-2xl">{tx('admin.cards')}</h2>
+          {adoptions.map((adoption) => (
+            <div key={adoption.id} className="space-y-2 border-t border-[#e3dcc4] pt-3">
+              <p>
+                {adoption.adopterName} · {adoption.adoptedAt} · {adoption.cardStatus === 'active' ? tx('admin.cardActive') : tx('admin.cardRevoked')}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {adoption.id.startsWith('adp_demo_') ? (
+                  <Link href={`/admin/cards/${adoption.id}`} className="btn-outline">
+                    {tx('admin.downloadCard')}
+                  </Link>
+                ) : null}
+                {adoption.cardStatus === 'active' ? (
+                  <>
+                    <form action={revokeAdoption}>
+                      <input type="hidden" name="code" value={tree.code} />
+                      <input type="hidden" name="adoptionId" value={adoption.id} />
+                      <SubmitButton pendingLabel={tx('common.pleaseWait')}>{tx('admin.revokeCard')}</SubmitButton>
+                    </form>
+                    <form action={reissueAdoption}>
+                      <input type="hidden" name="code" value={tree.code} />
+                      <input type="hidden" name="adoptionId" value={adoption.id} />
+                      <SubmitButton pendingLabel={tx('common.pleaseWait')}>{tx('admin.reissueCard')}</SubmitButton>
+                    </form>
+                  </>
+                ) : null}
+              </div>
+            </div>
+          ))}
+          <form action={createAdoption} className="space-y-3 border-t border-[#e3dcc4] pt-3">
+            <h3 className="text-xl">{tx('admin.adoptionTitle')}</h3>
+            <input type="hidden" name="code" value={tree.code} />
+            <label className="block">
+              <span className="lbl">{tx('admin.adopterName')}</span>
+              <input name="adopterName" required className="field" />
+            </label>
+            <label className="block">
+              <span className="lbl">{tx('admin.adoptedAt')}</span>
+              <input type="date" name="adoptedAt" required defaultValue={todayISO()} className="field" />
+            </label>
+            <label className="block">
+              <span className="lbl">{tx('admin.cardLocale')}</span>
+              <select name="locale" defaultValue="zh-TW" className="field">
+                {routing.locales.map((locale) => (
+                  <option key={locale} value={locale}>
+                    {locale}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <SubmitButton pendingLabel={tx('common.pleaseWait')}>{tx('admin.createAdoption')}</SubmitButton>
+          </form>
+        </section>
+      ) : null}
+      {staff.role === 'staff' ? (
+        <form action={savePlace} className="card space-y-4">
+          <h2 className="text-2xl">{tx('admin.placeTitle')}</h2>
+          <input type="hidden" name="code" value={tree.code} />
+          <label className="block">
+            <span className="lbl">{tx('admin.zone')}</span>
+            <input name="zone" defaultValue={tree.zone} className="field" />
+          </label>
+          <label className="block">
+            <span className="lbl">{tx('admin.tagCode')}</span>
+            <input name="tagCode" defaultValue={tree.tagCode} className="field" />
+          </label>
+          <label className="block">
+            <span className="lbl">{tx('admin.latin')}</span>
+            <input name="latin" defaultValue={tree.speciesLatin} className="field" />
+          </label>
+          <label className="block">
+            <span className="lbl">{tx('admin.lat')}</span>
+            <input name="lat" defaultValue={tree.lat ?? ''} inputMode="decimal" className="field" />
+          </label>
+          <label className="block">
+            <span className="lbl">{tx('admin.lng')}</span>
+            <input name="lng" defaultValue={tree.lng ?? ''} inputMode="decimal" className="field" />
+          </label>
+          <label className="flex min-h-[52px] items-center gap-3">
+            <input type="checkbox" name="adoptable" defaultChecked={tree.adoptable} className="size-6" />
+            <span>{tx('admin.adoptable')}</span>
+          </label>
+          <SubmitButton pendingLabel={tx('common.pleaseWait')}>{tx('admin.savePlace')}</SubmitButton>
+        </form>
+      ) : null}
+      {staff.role === 'staff' ? (
+        <form action={saveCardPhoto} encType="multipart/form-data" className="card space-y-4">
+          <h2 className="text-2xl">{tx('admin.cardPhoto')}</h2>
+          <p className="text-[16px]">{tx('admin.cardPhotoHint')}</p>
+          <input type="hidden" name="code" value={tree.code} />
+          {tree.cardPhotoUrl ? <img src={tree.cardPhotoUrl} alt="" className="photo aspect-[3/4] max-w-48" /> : null}
+          <label className="block">
+            <span className="lbl">{tx('admin.cardPhoto')}</span>
+            <input type="file" name="photo" accept="image/*" required className="field py-3" />
+          </label>
+          <SubmitButton pendingLabel={tx('common.pleaseWait')}>{tx('admin.saveCardPhoto')}</SubmitButton>
+        </form>
       ) : null}
       {staff.role === 'staff' ? (
         <form action={savePlanters} className="card space-y-4">

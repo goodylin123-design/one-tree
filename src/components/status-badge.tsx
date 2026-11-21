@@ -2,10 +2,10 @@ import { getTranslations } from 'next-intl/server'
 import type { TreeStatus } from '@/lib/types'
 
 const style: Record<TreeStatus, string> = {
-  growing: 'bg-yinyou text-white',
-  watching: 'bg-terra text-white',
-  replant_needed: 'bg-ink text-white',
-  replanted: 'bg-cream text-yinyou-dark',
+  growing: 'bg-[var(--color-yinyou-green)] text-white',
+  watching: 'bg-[var(--color-terracotta)] text-white',
+  replant_needed: 'bg-[var(--color-terracotta)] text-white',
+  replanted: 'bg-[var(--color-cream)] text-[var(--color-yinyou-green-dark)]',
 }
 
 export async function StatusBadge({ status }: { status: TreeStatus }) {

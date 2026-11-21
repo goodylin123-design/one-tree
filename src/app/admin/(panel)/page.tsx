@@ -31,6 +31,9 @@ export default async function AdminHome() {
         <Link href="/admin/trees" className="btn-primary">
           {tx('admin.trees')}
         </Link>
+        <Link href="/admin/photos" className="btn-outline">
+          {tx('admin.photoBatch')}
+        </Link>
         {staff.role === 'staff' ? (
           <>
             <Link href="/admin/groups" className="btn-outline">
@@ -38,6 +41,9 @@ export default async function AdminHome() {
             </Link>
             <Link href="/admin/notifications" className="btn-outline">
               {tx('admin.notifications')}
+            </Link>
+            <Link href="/admin/species" className="btn-outline">
+              {tx('admin.speciesTitle')}
             </Link>
           </>
         ) : null}

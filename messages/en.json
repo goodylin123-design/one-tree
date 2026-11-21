@@ -1,0 +1,329 @@
+{
+  "brand": {
+    "name": "The One · Yongjing",
+    "tagline": "In Yongjing, I plant something beautiful.",
+    "taglineLead": "In Yongjing,",
+    "taglineRest": "I plant something beautiful.",
+    "subline": "One tree, one good, a lifetime together.",
+    "en": "One Person. One Tree. One Story.",
+    "storyLine": "One person, one tree, one life story that belongs only to you.",
+    "onePerson": {
+      "title": "One person",
+      "body": "Every traveler carries a life story of their own."
+    },
+    "oneTree": {
+      "title": "One tree",
+      "body": "Adopt a tree already planted in the garden, and stay connected."
+    },
+    "oneStory": {
+      "title": "One story",
+      "body": "After you leave, the tree keeps growing, and the story goes on."
+    }
+  },
+  "common": {
+    "pleaseWait": "Please wait…",
+    "skip": "Skip to main content",
+    "sampleTree": "This is a sample tree from before opening. The photos are of the grounds. After adoption, they will be replaced with photos of this tree.",
+    "sampleGroup": "This is a sample group from before opening, for checking the layout.",
+    "notYet": "Not recorded yet",
+    "languages": "Language",
+    "join": ", "
+  },
+  "home": {
+    "inputHint": "Enter the tree number and the code on your certificate",
+    "codeLabel": "Tree number",
+    "pinLabel": "Code",
+    "codePlaceholder": "For example YJ-2027-0001",
+    "pinPlaceholder": "6 digits",
+    "submit": "See my tree",
+    "errorNotFound": "We cannot find this number. Please check the number and code on your certificate.",
+    "errorLocked": "Too many incorrect attempts. Please try again in 10 minutes.",
+    "heroAlt": "A garden path between the villas at Yongjing",
+    "about": "About One Tree",
+    "demoTitle": "Preview",
+    "demoHint": "Enter the number. No code is needed. Guests will not see this."
+  },
+  "tree": {
+    "titleOf": "{name}'s tree",
+    "code": "Number",
+    "species": "Species",
+    "plantedOn": "Adopted on",
+    "location": "Where it grows",
+    "status": "Condition",
+    "planters": "Adopter",
+    "height": "Height this season",
+    "heightCm": "{cm} cm",
+    "updateNote": "Photos are updated once a season.",
+    "updateWhen": "Next update: {month}",
+    "nextCheck": "Next check: {month}",
+    "replantCta": "Come back to Yongjing and plant again",
+    "statusGrowing": "Growing well",
+    "statusWatching": "Being watched",
+    "statusReplantNeeded": "Needs replanting",
+    "statusReplanted": "Replanted",
+    "photoFull": "Whole tree",
+    "photoDetail": "Leaves up close",
+    "unnamed": "Adopter",
+    "another": "Look up another tree",
+    "groupLink": "Trees from the same group",
+    "pageTitle": "My tree"
+  },
+  "nav": {
+    "timeline": "Growth record",
+    "message": "A note for the tree",
+    "certificate": "Local value certificate",
+    "return": "Return to Yongjing",
+    "share": "Share this tree",
+    "backToTree": "Back to my tree"
+  },
+  "timeline": {
+    "title": "Growth record",
+    "plantedDay": "Adoption day",
+    "quarter": "Q{q} {year}",
+    "empty": "After adoption, each season's photo will be kept here.",
+    "sample": "Sample photo, not of this tree",
+    "height": "Height {cm} cm",
+    "emptyAlt": "A pine in the courtyard"
+  },
+  "message": {
+    "title": "A note for the tree",
+    "hint": "Leave one sentence for this tree, or for the self who comes back to see it",
+    "limit": "One sentence, within 80 characters.",
+    "public": "Let people in the same group see it",
+    "save": "Keep this sentence",
+    "saved": "This sentence has been kept.",
+    "empty": "No note yet. You can write one on adoption day, or now.",
+    "placeholder": "Write here",
+    "author": "Your name",
+    "authorHint": "Optional",
+    "defaultAuthor": "Adopter",
+    "errorLength": "Please write one sentence, within 80 characters.",
+    "publicBadge": "Visible to the group",
+    "privateBadge": "Only you can see this",
+    "paintingAlt": "A guest's plant sketch"
+  },
+  "certificate": {
+    "title": "Local value certificate",
+    "intro": "This certificate records what this stay already did for Yongjing. Only facts that have happened are written here.",
+    "number": "Certificate number",
+    "stay": "Stay dates",
+    "guests": "Guests",
+    "localSpend": "Paid to local people on this stay",
+    "nurseryVisitors": "Nursery visits",
+    "treesPlanted": "Trees adopted",
+    "print": "Download / print certificate",
+    "money": "TWD {amount}",
+    "stayRange": "{start} – {end}",
+    "people": "{count} guests",
+    "trees": "{count} trees",
+    "visits": "{count} visits",
+    "sample": "Sample certificate. The figures are only for previewing the layout.",
+    "qrAlt": "QR code back to this tree"
+  },
+  "return": {
+    "title": "Return to Yongjing",
+    "book": "Book a return visit",
+    "replant": "Come home and plant again",
+    "contact": "Contact us",
+    "bookBody": "To come back and see this tree, call or write to us.",
+    "bookLink": "Open the booking page",
+    "lineLink": "Open the official LINE account",
+    "bookPending": "The booking page and official LINE account will be placed here once they are confirmed. For now, please call or email.",
+    "phone": "Call",
+    "email": "Email",
+    "replantBody": "If the tree did not survive, you are welcome to come back to Yongjing and plant another. The homecoming price and terms are still being confirmed. Please contact us first.",
+    "replantProxy": "Whether the nursery can replant for you when you cannot come in person, and what it would cost, is also still being confirmed.",
+    "cabinAlt": "A wooden cabin on the grounds",
+    "addressLabel": "Address"
+  },
+  "group": {
+    "title": "{count} trees adopted in Yongjing by {groupName}",
+    "hidden": "This traveler has not shared their name or their note for the tree.",
+    "publicMessage": "A note for the tree",
+    "empty": "This group has not adopted a tree yet.",
+    "how": "To see the full record of one tree, use the number and code on the certificate.",
+    "forHr": "Overview for travel companions and HR"
+  },
+  "about": {
+    "title": "About One Tree",
+    "signAlt": "The Yongjing grounds sign",
+    "positionTitle": "Days lived in Yongjing",
+    "position": [
+      "Taiwan's first living-culture inn.",
+      "Living-culture means guests spend Yongjing's own days here: out walking by day, gathering again at night, and taking meals beside the kitchen.",
+      "Day wander, night song: by day you wander, to the nursery to see how trees are raised, and to sketch beneath famous trees. By night you sing, back in the hall, listening and sharing the drawings from the day.",
+      "Song is fullness, a life filled out. Wander is friendship, a life shared."
+    ],
+    "courtyardTitle": "One courtyard, one yard, one kitchen",
+    "courtyard": [
+      "How many ways of living can one courtyard hold?",
+      "In a traditional courtyard house, the front court is where people gather. The yard lets Yongjing's light and the family's shadows pass through. The kitchen holds the everyday meals of people and land, generation after generation.",
+      "Space was never only the arrangement of rooms. It keeps the flavor and the wisdom of how people live.",
+      "The One has walked into Yongjing's courtyards, large and small, and asked again how the court, the yard, and the kitchen meet the present. Tradition takes a new stance, and the beauty of feeling keeps happening, now and ahead.",
+      "One courtyard, one yard, one kitchen. A graceful courtyard of this time, growing a way of living that is its own."
+    ],
+    "cheng": "Court",
+    "yuan": "Yard",
+    "zaojiao": "Kitchen",
+    "hall": "Skylight hall",
+    "dining": "Dining room",
+    "plaque": "Family plaque",
+    "famous": "Famous tree",
+    "pine": "Famous black pine",
+    "nursery": "Local nursery",
+    "updateTitle": "How the tree's photos are updated",
+    "updateBody": "Photos and condition are updated once a season. There is no live monitoring. On adoption day, a photo called Adoption day is kept first. If the tree is unwell, or does not survive, we tell you plainly, and we keep the photo and the reason.",
+    "season": "Season",
+    "shoot": "When we photograph",
+    "online": "When it goes online",
+    "schedule": [
+      {
+        "season": "First season",
+        "shoot": "2nd week of March",
+        "online": "By the end of March"
+      },
+      {
+        "season": "Second season",
+        "shoot": "2nd week of June",
+        "online": "By the end of June"
+      },
+      {
+        "season": "Third season",
+        "shoot": "2nd week of September",
+        "online": "By the end of September"
+      },
+      {
+        "season": "Fourth season",
+        "shoot": "2nd week of December",
+        "online": "By the end of December"
+      }
+    ],
+    "factsTitle": "The grounds",
+    "facts": [
+      {
+        "label": "Rooms",
+        "value": "20 standalone villas, 40 guests in all"
+      },
+      {
+        "label": "Plants",
+        "value": "About 6,600 square meters of green, 80 Taiwan native species, 15,000 plants"
+      },
+      {
+        "label": "Local hiring",
+        "value": "At least 30 staff hired in Changhua"
+      },
+      {
+        "label": "Getting here",
+        "value": "About 15 minutes by shuttle from Changhua HSR station"
+      },
+      {
+        "label": "Opening",
+        "value": "January 1, 2027"
+      }
+    ],
+    "diagram": "Sketch",
+    "diagramNote": "This is a design sketch of the grounds from above, not a photograph."
+  },
+  "share": {
+    "title": "Share this tree",
+    "hint": "Send this picture to your family, and look at the tree together.",
+    "save": "Save the picture",
+    "making": "Making the picture…",
+    "saved": "The picture is saved. You can send it to your family.",
+    "shared": "Share is open.",
+    "fail": "The picture was not made. Please try again.",
+    "alt": "The tree I adopted in Yongjing"
+  },
+  "enter": {
+    "opening": "Opening your tree…",
+    "button": "See my tree"
+  },
+  "notify": {
+    "watching": "This season your tree has dropped some leaves. The nursery is already looking after it. We will look again in {nextMonth} and tell you what we find.",
+    "replantNeeded": "We are sorry to tell you that the {species} you adopted on {plantedOn} did not make it through this season. The nursery's judgment is: {reason}. We have kept the last photo in your growth record. You are welcome back to Yongjing to plant another tree at the homecoming price, and let the story continue.",
+    "replanted": "{name} came back to Yongjing on {replantedOn} and planted a {species}. This is chapter two of this tree's story.",
+    "replantedByNursery": "On {replantedOn} the nursery planted a {species} on your behalf. This is chapter two of this tree's story.",
+    "reasonFallback": "Confirmed on site by the nursery"
+  },
+  "footer": {
+    "brand": "The One · Yongjing　One Person. One Tree. One Story.",
+    "address": "No. 56, Lane 972, Section 1, Zhongshan Road, Yongjing Township, Changhua County",
+    "phone": "02 2562 1777",
+    "email": "inyou.yongjing@theonestyle.com"
+  },
+  "notFound": {
+    "title": "This page cannot be found",
+    "body": "Please go back to the home page and look again with the number on your certificate.",
+    "home": "Back to home"
+  },
+  "lexicon": {
+    "青剛櫟": "ring-cupped oak",
+    "烏心石": "Formosan michelia",
+    "台灣肖楠": "Taiwan incense cedar",
+    "樟樹": "camphor tree",
+    "台灣欒樹": "Taiwan goldenrain tree",
+    "黃連木": "Chinese pistache",
+    "苦楝": "chinaberry",
+    "楓香": "Chinese sweet gum",
+    "園區綠地 A 區": "Garden lawn A",
+    "園區綠地 B 區": "Garden lawn B",
+    "園區綠地 C 區": "Garden lawn C",
+    "苗圃培育區": "Nursery",
+    "示例住客": "Sample guest",
+    "示例住客A": "Sample guest A",
+    "示例住客B": "Sample guest B",
+    "示例・樂齡團": "Sample senior group",
+    "落葉偏多，連日大雨後根系還沒站穩": "More leaves are falling, and the roots have not settled after days of heavy rain",
+    "落葉偏多，連日大雨後根系還沒站穩。": "More leaves are falling, and the roots have not settled after days of heavy rain.",
+    "原本的樟樹沒有發新芽": "The original camphor tree sent out no new shoots",
+    "沒有發新芽，苗圃確認沒有存活。": "No new shoots appeared, and the nursery confirmed it did not survive.",
+    "颱風折斷主幹，苗圃確認沒有存活": "A typhoon broke the main trunk, and the nursery confirmed it did not survive",
+    "颱風折斷主幹，苗圃確認沒有存活。": "A typhoon broke the main trunk, and the nursery confirmed it did not survive.",
+    "新葉展開了。": "New leaves have opened.",
+    "這一季生長穩定。": "Growth was steady this season.",
+    "示例住客A回到永靖，再種下一棵烏心石。": "Sample guest A came back to Yongjing and planted a Formosan michelia.",
+    "希望你在永靖慢慢長，我下次再來看你。": "Grow slowly here in Yongjing. I will come back to see you.",
+    "這棵樹給退休後的自己。": "This tree is for the self I will be after retirement.",
+    "孫子說，這是我們家的樹。": "The grandchild said, this is our family's tree.",
+    "認養那天，土還有點鬆。": "On adoption day, the soil was still loose.",
+    "認養那天。": "Adoption day.",
+    "認養那天的樟樹。": "The camphor tree on adoption day."
+  },
+  "adopt": {
+    "nearbyTitle": "I am in the garden",
+    "nearbyHint": "After you allow location, this lists the three nearest trees. The location stays on this phone and is not stored.",
+    "nearbyButton": "Find nearby trees",
+    "nearbyNeed": "Location permission is needed to list nearby trees.",
+    "nearbyEmpty": "No located trees are nearby yet.",
+    "nearbyMeters": "About {meters} m",
+    "mapTitle": "Place in the garden",
+    "mapHint": "This is a sketch, so you can match it in the garden.",
+    "cardRevokedTitle": "This card is turned off",
+    "cardRevoked": "This card is turned off. Please contact Yongjing Yinyou.",
+    "cardMissingTitle": "Card not found",
+    "cardMissing": "This link does not match a tree card. Please contact Yongjing Yinyou.",
+    "tagAdopted": "Someone has adopted this tree.",
+    "tagOpen": "This tree can still be adopted.",
+    "tagSpecies": "About this species"
+  },
+  "species": {
+    "ringOak": "An evergreen oak. The leaf underside is pale, and the fruit is an acorn. The ring-cupped oaks in the garden are already planted.",
+    "michelia": "An evergreen magnolia with fragrant white flowers and dark heartwood.",
+    "incense": "A cypress found in Taiwan. The wood has a clean scent.",
+    "camphor": "A common camphor tree in Taiwan. Crushed leaves smell of camphor.",
+    "goldenrain": "A Taiwan goldenrain tree. Its seed capsules turn red in autumn.",
+    "pistache": "A deciduous pistache. The leaves turn red in autumn.",
+    "chinaberry": "A deciduous chinaberry. It flowers pale purple in spring.",
+    "sweetgum": "A deciduous sweetgum. The leaves turn red in autumn.",
+    "unknown": "This is a Taiwan native tree in the garden."
+  },
+  "carbon": {
+    "yearlyLead": "This tree is estimated to store about ",
+    "yearlyTail": " kg of carbon dioxide a year (a species average).",
+    "source": "Source: {basis}",
+    "more": "Full note",
+    "explain": "This figure is the average for the species, not a measurement of this tree. A person confirms the number before it is entered. One kilogram of carbon is about 3.67 kilograms of carbon dioxide. This is the estimated carbon storage of this tree.",
+    "sinceLead": "Since {start}, about {years} years, about ",
+    "sinceTail": " kg of carbon dioxide in total. Counting stops if the tree does not survive. A replanted tree starts again."
+  }
+}

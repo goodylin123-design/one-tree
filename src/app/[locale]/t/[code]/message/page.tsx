@@ -4,6 +4,7 @@ import { GuestFrame } from '@/components/guest-frame'
 import { SubmitButton } from '@/components/submit-button'
 import { Link } from '@/i18n/navigation'
 import { requireTree } from '@/lib/guard'
+import { readAdoptionId } from '@/lib/session'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -23,6 +24,8 @@ export default async function MessagePage({
   setRequestLocale(locale)
   const query = await searchParams
   const bundle = await requireTree(locale, code)
+  const adoptionId = await readAdoptionId()
+  const messages = bundle.messages.filter((message) => !adoptionId || !message.adoptionId || message.adoptionId === adoptionId)
   const t = await getTranslations('message')
   const nav = await getTranslations('nav')
   const common = await getTranslations('common')
@@ -41,9 +44,9 @@ export default async function MessagePage({
             {t('saved')}
           </p>
         ) : null}
-        {bundle.messages.length === 0 ? <p>{t('empty')}</p> : null}
+        {messages.length === 0 ? <p>{t('empty')}</p> : null}
         <div className="space-y-3">
-          {bundle.messages.map((message) => (
+          {messages.map((message) => (
             <article key={message.id} className="card">
               <p className="kai text-2xl">{message.content}</p>
               <p className="mt-2 text-[16px] text-yinyou-dark">

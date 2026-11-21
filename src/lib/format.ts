@@ -1,22 +1,41 @@
+import type { AppLocale } from '@/i18n/routing'
+
 export function normalizeCode(input: string) {
   return input.trim().toUpperCase().replace(/\s+/g, '')
 }
 
-export function formatDate(iso: string) {
+const englishMonth = new Intl.DateTimeFormat('en', { month: 'long', timeZone: 'UTC' })
+
+export function formatDate(iso: string, locale: AppLocale = 'zh-TW') {
   const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso)
   if (!match) return iso
-  return `${match[1]}年${Number(match[2])}月${Number(match[3])}日`
+  const year = Number(match[1])
+  const month = Number(match[2])
+  const day = Number(match[3])
+  if (locale === 'en') {
+    const name = englishMonth.format(new Date(Date.UTC(year, month - 1, day)))
+    return `${name} ${day}, ${year}`
+  }
+  if (locale === 'ko') return `${year}년 ${month}월 ${day}일`
+  return `${year}年${month}月${day}日`
 }
 
-export function formatMonth(iso: string) {
+export function formatMonth(iso: string, locale: AppLocale = 'zh-TW') {
   const match = /^(\d{4})-(\d{2})/.exec(iso)
   if (!match) return iso
-  return `${match[1]}年${Number(match[2])}月`
+  const year = Number(match[1])
+  const month = Number(match[2])
+  if (locale === 'en') {
+    const name = englishMonth.format(new Date(Date.UTC(year, month - 1, 1)))
+    return `${name} ${year}`
+  }
+  if (locale === 'ko') return `${year}년 ${month}월`
+  return `${year}年${month}月`
 }
 
-export function formatStay(start: string, end: string) {
-  if (!end || start === end) return formatDate(start)
-  return `${formatDate(start)}至${formatDate(end)}`
+export function formatAmount(amount: number, locale: AppLocale = 'zh-TW') {
+  const tag = locale === 'zh-TW' ? 'zh-Hant' : locale === 'zh-CN' ? 'zh-Hans' : locale
+  return new Intl.NumberFormat(tag).format(amount)
 }
 
 export function formatDateTime(iso: string) {
@@ -33,18 +52,23 @@ export function formatDateTime(iso: string) {
   }).format(date)
 }
 
-export function formatTwd(amount: number) {
-  return `新臺幣 ${new Intl.NumberFormat('zh-TW').format(amount)} 元`
-}
-
-export function nextUpdateMonth(from = new Date()) {
-  const month = from.getMonth() + 1
-  const year = from.getFullYear()
+export function nextUpdateMonth(from = new Date(), plantedOn?: string, locale: AppLocale = 'zh-TW') {
+  let base = from
+  if (plantedOn) {
+    const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(plantedOn)
+    if (match) {
+      const planted = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]), 12)
+      if (planted > base) base = planted
+    }
+  }
+  const month = base.getMonth() + 1
+  const year = base.getFullYear()
   const points = [3, 6, 9, 12]
-  if (points.includes(month)) return `${year}年${month}月`
+  const stamp = (y: number, m: number) => formatMonth(`${y}-${String(m).padStart(2, '0')}`, locale)
+  if (points.includes(month)) return stamp(year, month)
   const upcoming = points.find((point) => point > month)
-  if (upcoming) return `${year}年${upcoming}月`
-  return `${year + 1}年3月`
+  if (upcoming) return stamp(year, upcoming)
+  return stamp(year + 1, 3)
 }
 
 export function currentSeason(from = new Date()) {
@@ -60,11 +84,17 @@ export function todayISO(from = new Date()) {
 }
 
 export function siteOrigin() {
-  const configured = process.env.NEXT_PUBLIC_SITE_URL
+  const configured = process.env.PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL
   if (configured) return configured.replace(/\/$/, '')
-  const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL
-  if (vercelHost) return `https://${vercelHost}`
   return 'http://localhost:3000'
+}
+
+export function cardUrl(key: string) {
+  return `${siteOrigin()}/c/${encodeURIComponent(key)}`
+}
+
+export function tagUrl(tagCode: string) {
+  return `${siteOrigin()}/tag/${encodeURIComponent(tagCode)}`
 }
 
 export function treeEntryUrl(code: string, token: string) {
@@ -87,7 +117,6 @@ export function nextTreeCode(codes: string[], plantedOn: string) {
   return `${prefix}${String(max + 1).padStart(4, '0')}`
 }
 
-export function planterNames(names: string[]) {
-  const clean = names.map((name) => name.trim()).filter(Boolean)
-  return clean.length ? clean.join('、') : '種樹人'
+export function planterNames(names: string[], separator = '、') {
+  return names.map((name) => name.trim()).filter(Boolean).join(separator)
 }

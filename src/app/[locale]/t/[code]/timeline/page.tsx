@@ -4,6 +4,7 @@ import { StatusBadge } from '@/components/status-badge'
 import { Link } from '@/i18n/navigation'
 import { formatDate } from '@/lib/format'
 import { requireTree } from '@/lib/guard'
+import { asLocale, phrase } from '@/lib/messages'
 
 function seasonLabel(season: string, planted: string, quarter: (values: { year: string; q: string }) => string) {
   if (season === 'planted') return planted
@@ -26,6 +27,7 @@ export default async function TimelinePage({ params }: { params: Promise<{ local
   const t = await getTranslations('timeline')
   const treeText = await getTranslations('tree')
   const nav = await getTranslations('nav')
+  const localeKey = asLocale(locale)
 
   return (
     <GuestFrame>
@@ -46,7 +48,9 @@ export default async function TimelinePage({ params }: { params: Promise<{ local
                 <p className="kai text-2xl text-yinyou-dark">
                   {seasonLabel(update.season, t('plantedDay'), (values) => t('quarter', values))}
                 </p>
-                <p>{formatDate(update.takenOn)}</p>
+                <p>
+                  <span className="nowrap">{formatDate(update.takenOn, localeKey)}</span>
+                </p>
                 <StatusBadge status={update.status} />
                 {update.photos.map((photo) => (
                   <figure key={photo.url + photo.kind}>
@@ -56,11 +60,11 @@ export default async function TimelinePage({ params }: { params: Promise<{ local
                 ))}
                 {update.species ? (
                   <p>
-                    {treeText('species')}：{update.species}
+                    {treeText('species')}：{phrase(locale, update.species)}
                   </p>
                 ) : null}
                 {update.heightCm ? <p>{t('height', { cm: update.heightCm })}</p> : null}
-                {update.note ? <p>{update.note}</p> : null}
+                {update.note ? <p>{phrase(locale, update.note)}</p> : null}
               </li>
             ))}
           </ol>

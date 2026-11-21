@@ -1,16 +1,18 @@
 'use server'
 
 import { redirect } from 'next/navigation'
+import { isLocale } from '@/i18n/routing'
 import { GROUP_TYPES } from '@/lib/catalog'
 import { encryptSecret, hashSecret, nid, randomCode, randomPin, randomToken, verifySecret } from '@/lib/crypto'
 import { updateDb } from '@/lib/db'
 import { nextTreeCode, normalizeCode, planterNames } from '@/lib/format'
+import { speciesInfo, speciesKey } from '@/lib/species'
 import { requireStaffUser, requireUser } from '@/lib/guard'
 import { noticeBody } from '@/lib/notify'
 import { savePhoto } from '@/lib/photos'
 import { clearAdminSession, setAdminSession } from '@/lib/session'
 import { field } from '@/lib/text'
-import type { Database, GroupType, NoticeResult, TreeStatus } from '@/lib/types'
+import type { Database, GroupType, NoticeResult, PhotoKind, TreeStatus } from '@/lib/types'
 
 const LOCK_MS = 10 * 60 * 1000
 const STATUSES: TreeStatus[] = ['growing', 'watching', 'replant_needed', 'replanted']
@@ -206,13 +208,22 @@ export async function batchTrees(formData: FormData) {
         sample: false,
         failedAttempts: 0,
         lockedUntil: null,
+        zone: location,
+        speciesZh: species,
+        speciesLatin: speciesInfo(species).latin,
+        lat: null,
+        lng: null,
+        tagCode: '',
+        adoptable: true,
+        speciesId: speciesKey(species),
+        cardPhotoUrl: '',
       })
       const [namePart, contactPart] = (lines[i] || '').split(/[,，]/).map((part) => part.trim())
       const contact = consent && contactPart?.includes('@') ? contactPart : ''
       db.planters.push({
         id: nid('pl'),
         treeId,
-        displayName: namePart || '種樹人',
+        displayName: namePart || '認養人',
         contact,
         notifyConsent: Boolean(contact),
         locale: 'zh-TW',
@@ -371,4 +382,209 @@ export async function saveUpdate(formData: FormData) {
   })
   if (notices < 0) redirect('/admin/trees')
   redirect(`${back}?ok=1&notices=${notices}`)
+}
+
+export async function createAdoption(formData: FormData) {
+  await requireStaffUser()
+  const code = normalizeCode(field(formData, 'code'))
+  const name = field(formData, 'adopterName').slice(0, 40)
+  const adoptedAt = field(formData, 'adoptedAt')
+  const locale = field(formData, 'locale')
+  const back = `/admin/trees/${code}`
+  if (!name || !/^\d{4}-\d{2}-\d{2}$/.test(adoptedAt) || !isLocale(locale)) redirect(`${back}?error=date`)
+  const key = randomToken()
+  const id = nid('adp')
+  const saved = await updateDb((db) => {
+    const tree = db.trees.find((item) => item.code === code)
+    if (!tree) return false
+    db.adoptions.push({
+      id,
+      treeId: tree.id,
+      adopterName: name,
+      adoptedAt,
+      cardKeyHash: hashSecret(key),
+      cardStatus: 'active',
+      locale,
+    })
+    return true
+  })
+  if (!saved) redirect('/admin/trees')
+  redirect(`${back}?key=${encodeURIComponent(key)}&adoption=${encodeURIComponent(id)}`)
+}
+
+export async function revokeAdoption(formData: FormData) {
+  await requireStaffUser()
+  const code = normalizeCode(field(formData, 'code'))
+  const id = field(formData, 'adoptionId')
+  await updateDb((db) => {
+    const adoption = db.adoptions.find((item) => item.id === id)
+    const tree = db.trees.find((item) => item.code === code)
+    if (adoption && tree && adoption.treeId === tree.id) adoption.cardStatus = 'revoked'
+  })
+  redirect(`/admin/trees/${code}?ok=1`)
+}
+
+export async function reissueAdoption(formData: FormData) {
+  await requireStaffUser()
+  const code = normalizeCode(field(formData, 'code'))
+  const id = field(formData, 'adoptionId')
+  const key = randomToken()
+  const nextId = nid('adp')
+  const saved = await updateDb((db) => {
+    const current = db.adoptions.find((item) => item.id === id)
+    const tree = db.trees.find((item) => item.code === code)
+    if (!current || !tree || current.treeId !== tree.id) return false
+    current.cardStatus = 'revoked'
+    db.adoptions.push({
+      id: nextId,
+      treeId: tree.id,
+      adopterName: current.adopterName,
+      adoptedAt: current.adoptedAt,
+      cardKeyHash: hashSecret(key),
+      cardStatus: 'active',
+      locale: current.locale,
+    })
+    return true
+  })
+  if (!saved) redirect(`/admin/trees/${code}?error=date`)
+  redirect(`/admin/trees/${code}?key=${encodeURIComponent(key)}&adoption=${encodeURIComponent(nextId)}`)
+}
+
+export async function savePlace(formData: FormData) {
+  await requireStaffUser()
+  const code = normalizeCode(field(formData, 'code'))
+  const zone = field(formData, 'zone')
+  const tagCode = field(formData, 'tagCode')
+  const latin = field(formData, 'latin')
+  const latRaw = field(formData, 'lat')
+  const lngRaw = field(formData, 'lng')
+  const lat = latRaw ? Number(latRaw) : null
+  const lng = lngRaw ? Number(lngRaw) : null
+  const adoptable = formData.get('adoptable') === 'on'
+  if ((lat !== null && !Number.isFinite(lat)) || (lng !== null && !Number.isFinite(lng))) redirect(`/admin/trees/${code}?error=date`)
+  await updateDb((db) => {
+    const tree = db.trees.find((item) => item.code === code)
+    if (!tree) return
+    tree.zone = zone || tree.zone
+    tree.tagCode = tagCode
+    tree.speciesLatin = latin
+    tree.lat = lat
+    tree.lng = lng
+    tree.adoptable = adoptable
+  })
+  redirect(`/admin/trees/${code}?ok=1`)
+}
+
+export async function batchSeasonPhotos(formData: FormData) {
+  const staff = await requireUser()
+  const season = field(formData, 'season')
+  const takenOn = field(formData, 'takenOn')
+  if (!season || !/^\d{4}-\d{2}-\d{2}$/.test(takenOn)) redirect('/admin/photos?error=date')
+  const files = formData.getAll('photos').filter((item): item is File => item instanceof File && item.size > 0)
+  const grouped = new Map<string, Partial<Record<PhotoKind, File>>>()
+  for (const file of files) {
+    const match = /^([A-Za-z0-9-]+)-(full|detail)\.[a-z0-9]+$/i.exec(file.name)
+    if (!match?.[1] || !match[2]) continue
+    const code = normalizeCode(match[1])
+    const kind = match[2].toLowerCase() as PhotoKind
+    const slot = grouped.get(code) ?? {}
+    slot[kind] = file
+    grouped.set(code, slot)
+  }
+  if (grouped.size === 0) redirect('/admin/photos?error=photo')
+  const saved = new Map<string, Partial<Record<PhotoKind, string>>>()
+  try {
+    for (const [code, slot] of grouped) {
+      const urls: Partial<Record<PhotoKind, string>> = {}
+      if (slot.full) urls.full = (await savePhoto(slot.full)) || ''
+      if (slot.detail) urls.detail = (await savePhoto(slot.detail)) || ''
+      saved.set(code, urls)
+    }
+  } catch {
+    redirect('/admin/photos?error=photo')
+  }
+  const count = await updateDb((db) => {
+    let updated = 0
+    for (const [code, urls] of saved) {
+      const tree = db.trees.find((item) => item.code === code)
+      if (!tree) continue
+      const photos = (['full', 'detail'] as PhotoKind[])
+        .map((kind) => (urls[kind] ? { url: urls[kind] as string, kind } : null))
+        .filter((item): item is { url: string; kind: PhotoKind } => Boolean(item))
+      if (!photos.length) continue
+      const existing = db.updates.find((item) => item.treeId === tree.id && item.season === season)
+      if (existing) {
+        const kept = existing.photos.filter((item) => !photos.some((photo) => photo.kind === item.kind))
+        existing.photos = [...kept, ...photos]
+        existing.takenOn = takenOn
+        existing.uploader = staff.name
+      } else {
+        db.updates.push({
+          id: nid('upd'),
+          treeId: tree.id,
+          season,
+          takenOn,
+          photos,
+          heightCm: tree.heightCm,
+          status: tree.status,
+          species: tree.species,
+          note: '',
+          uploader: staff.name,
+          sample: false,
+          createdAt: new Date().toISOString(),
+        })
+      }
+      updated += 1
+    }
+    return updated
+  })
+  redirect(`/admin/photos?ok=${count}`)
+}
+
+export async function saveSpecies(formData: FormData) {
+  await requireStaffUser()
+  const id = field(formData, 'id')
+  const latin = field(formData, 'latin')
+  const basis = field(formData, 'basis').slice(0, 200)
+  const raw = field(formData, 'co2')
+  const co2 = raw ? Number(raw) : null
+  if (raw && (co2 === null || !Number.isFinite(co2) || co2 < 0 || co2 > 10000)) redirect('/admin/species?error=date')
+  await updateDb((db) => {
+    const species = db.species.find((item) => item.id === id)
+    if (!species) return
+    species.speciesLatin = latin
+    species.co2Basis = basis
+    species.co2KgPerYearAvg = co2
+    species.updatedAt = new Date().toISOString()
+    for (const tree of db.trees) {
+      if (tree.speciesId === id || tree.speciesZh === species.speciesZh || tree.species === species.speciesZh) {
+        tree.speciesId = id
+        tree.speciesLatin = latin || tree.speciesLatin
+      }
+    }
+  })
+  redirect('/admin/species?ok=1')
+}
+
+export async function saveCardPhoto(formData: FormData) {
+  await requireStaffUser()
+  const code = normalizeCode(field(formData, 'code'))
+  const file = formData.get('photo')
+  if (!(file instanceof File) || file.size === 0) redirect(`/admin/trees/${code}?error=photo`)
+  let url = ''
+  try {
+    url = (await savePhoto(file)) || ''
+  } catch {
+    redirect(`/admin/trees/${code}?error=photo`)
+  }
+  if (!url) redirect(`/admin/trees/${code}?error=photo`)
+  await updateDb((db) => {
+    const tree = db.trees.find((item) => item.code === code)
+    if (!tree) return
+    tree.cardPhotoUrl = url
+    for (const other of db.trees) {
+      if (other.speciesId && other.speciesId === tree.speciesId && !other.cardPhotoUrl) other.cardPhotoUrl = url
+    }
+  })
+  redirect(`/admin/trees/${code}?ok=1`)
 }

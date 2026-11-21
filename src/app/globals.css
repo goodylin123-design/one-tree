@@ -1,12 +1,13 @@
+@import '../../One_Tree_開發包-v1/brand/tokens.css';
 @import 'tailwindcss';
 
-@theme {
-  --color-yinyou: #0e845a;
-  --color-yinyou-dark: #0b6e4b;
-  --color-cream: #eae4cc;
-  --color-paper: #faf8f1;
-  --color-terra: #8a4b35;
-  --color-ink: #1a1f1c;
+@theme inline {
+  --color-yinyou: var(--color-yinyou-green);
+  --color-yinyou-dark: var(--color-yinyou-green-dark);
+  --color-cream: var(--color-cream);
+  --color-paper: var(--color-paper);
+  --color-terra: var(--color-terracotta);
+  --color-ink: var(--color-ink);
 }
 
 @layer base {
@@ -17,9 +18,15 @@
     margin: 0;
     background: #faf8f1;
     color: #1a1f1c;
-    font-family: Arial, 'Noto Sans TC', sans-serif;
+    font-family: 'Noto Sans TC', 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
     font-size: 18px;
     line-height: 1.75;
+  }
+  .locale-zh-CN :where(h1, h2, h3, .kai),
+  .locale-en :where(h1, h2, h3, .kai),
+  .locale-ja :where(h1, h2, h3, .kai),
+  .locale-ko :where(h1, h2, h3, .kai) {
+    font-family: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans TC', sans-serif;
   }
   h1,
   h2,
@@ -37,7 +44,7 @@
     color: inherit;
   }
   :focus-visible {
-    outline: 3px solid #0b6e4b;
+    outline: 3px solid var(--color-yinyou-green-dark);
     outline-offset: 3px;
   }
 }
@@ -68,14 +75,34 @@
   cursor: pointer;
 }
 .btn-primary {
-  border: 2px solid #0e845a;
-  background: #0e845a;
+  border: 2px solid var(--color-yinyou-green);
+  background: var(--color-yinyou-green);
   color: #fff;
 }
 .btn-outline {
-  border: 2px solid #0b6e4b;
+  border: 2px solid var(--color-yinyou-green-dark);
   background: transparent;
-  color: #0b6e4b;
+  color: var(--color-yinyou-green-dark);
+}
+.text-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--color-yinyou-green-dark);
+  font-size: 18px;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.print-only {
+  display: none;
 }
 .btn-primary:disabled,
 .btn-outline:disabled {
@@ -114,14 +141,43 @@ textarea.field {
 }
 
 @media print {
-  .no-print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  .no-print,
+  .btn-primary,
+  .btn-outline,
+  .text-link {
     display: none !important;
   }
-  body {
+  .print-only {
+    display: block !important;
+  }
+  html,
+  body,
+  .screen {
     background: #fff !important;
+    color: #000 !important;
   }
   .screen {
     max-width: none;
+  }
+  .certificate-sheet {
+    display: flex;
+    min-height: 250mm;
+    flex-direction: column;
+    border: none !important;
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+  .certificate-sheet :where(h1, h2, h3, p, dt, dd, span, li, figcaption) {
+    color: #000 !important;
+    background: transparent !important;
+  }
+  .certificate-sheet .print-only {
+    margin-top: auto;
   }
   .label-card {
     break-inside: avoid;

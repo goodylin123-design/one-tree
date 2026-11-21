@@ -1,9 +1,12 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { enterTree } from '@/actions/guest'
 import { GuestFrame } from '@/components/guest-frame'
+import { NearbyTrees } from '@/components/nearby-trees'
 import { SubmitButton } from '@/components/submit-button'
 import { Link } from '@/i18n/navigation'
 import { demoTrees } from '@/lib/demo'
+import { readDb } from '@/lib/db'
+import { phrase } from '@/lib/messages'
 
 export default async function HomePage({
   params,
@@ -16,9 +19,34 @@ export default async function HomePage({
   setRequestLocale(locale)
   const query = await searchParams
   const t = await getTranslations('home')
+  const adopt = await getTranslations('adopt')
   const brand = await getTranslations('brand')
   const common = await getTranslations('common')
-  const showDemo = process.env.NODE_ENV !== 'production' || process.env.NEXT_PUBLIC_SHOW_DEMO === 'true'
+  const treeText = await getTranslations('tree')
+  const demoLabel = {
+    '1': 'statusGrowing',
+    '2': 'statusWatching',
+    '3': 'statusReplanted',
+    '4': 'statusReplantNeeded',
+  } as const
+  const showDemo = process.env.NEXT_PUBLIC_SHOW_DEMO === 'true'
+  const db = readDb()
+  const nearby = db.trees
+    .filter((tree) => tree.lat != null && tree.lng != null && tree.tagCode)
+    .map((tree) => {
+      const latest = db.updates
+        .filter((item) => item.treeId === tree.id)
+        .sort((a, b) => a.takenOn.localeCompare(b.takenOn))
+        .at(-1)
+      const photo = latest?.photos.find((item) => item.kind === 'full') ?? latest?.photos[0]
+      return {
+        tagCode: tree.tagCode,
+        species: phrase(locale, tree.species),
+        photo: photo?.url || '',
+        lat: tree.lat as number,
+        lng: tree.lng as number,
+      }
+    })
   const pillars = [
     { title: brand('onePerson.title'), body: brand('onePerson.body') },
     { title: brand('oneTree.title'), body: brand('oneTree.body') },
@@ -33,7 +61,10 @@ export default async function HomePage({
       <img src="/assets/photos/villa-path.jpg" alt={t('heroAlt')} className="photo mt-5 aspect-[4/3] rounded-none" />
       <div className="space-y-6 px-5 py-6">
         <div>
-          <h1 className="text-[2rem] text-yinyou-dark">{brand('tagline')}</h1>
+          <h1 className="text-[2rem] text-yinyou-dark">
+            <span className="block">{brand('taglineLead')}</span>
+            <span className="block">{brand('taglineRest')}</span>
+          </h1>
           <p className="mt-2">{brand('subline')}</p>
           <p className="text-yinyou-dark">{brand('en')}</p>
         </div>
@@ -55,10 +86,8 @@ export default async function HomePage({
             <span className="lbl">{t('pinLabel')}</span>
             <input
               name="pin"
-              required
               inputMode="numeric"
               autoComplete="off"
-              pattern="[0-9]{6}"
               maxLength={6}
               placeholder={t('pinPlaceholder')}
               className="field"
@@ -84,6 +113,16 @@ export default async function HomePage({
             </section>
           ))}
         </div>
+        <NearbyTrees
+          trees={nearby}
+          lang={locale}
+          title={adopt('nearbyTitle')}
+          hint={adopt('nearbyHint')}
+          button={adopt('nearbyButton')}
+          need={adopt('nearbyNeed')}
+          empty={adopt('nearbyEmpty')}
+          metersLabel={adopt.raw('nearbyMeters')}
+        />
         <Link href="/about" className="btn-outline">
           {t('about')}
         </Link>
@@ -94,7 +133,7 @@ export default async function HomePage({
             <ul className="space-y-1 text-[16px]">
               {demoTrees.map((tree) => (
                 <li key={tree.code}>
-                  {tree.label}：{tree.code}　{tree.pin}
+                  {treeText(demoLabel[tree.shortcut])}：<span className="nowrap">{tree.shortcut}</span>
                 </li>
               ))}
             </ul>
